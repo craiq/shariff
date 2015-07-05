@@ -93,7 +93,7 @@ Shariff.prototype = {
         referrerTrack: null,
 
         // services to be enabled in the following order
-        services   : ['twitter', 'facebook', 'googleplus', 'info'],
+        services   : [ 'facebook', 'facebooklike','twitter', 'googleplus'],
 
         title: function() {
             return $('title').text();
@@ -204,14 +204,9 @@ Shariff.prototype = {
             if (typeof service.faName !== 'undefined') {
                 $shareLink.prepend('<span class="fa ' +  service.faName + '">');
             }
-            if(service.width){
-                $shareLink.data('width',service.width);
-            }
 
             if (service.popup) {
                 $shareLink.attr('rel', 'popup');
-            } else if(service.tooltip){
-                $shareLink.attr('rel', 'tooltip');
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }
@@ -240,37 +235,6 @@ Shariff.prototype = {
 
         });
 
-        $buttonList.on('click', '[rel="tooltip"]', function(e) {
-            e.preventDefault();
-            var
-                self = this,
-                url = $(this).attr('href'),
-                ot = $(this).offset().top - 150,
-                ol = $(this).offset().left
-                ;
-
-            if ($(this).data('width')){
-                $(this).parent().width($(this).data('width'));
-            }
-
-            $('body').prepend('' +
-            '<div class="shariff-tooltip" style="top: ' + ot + 'px; left: ' + ol + 'px;">' +
-            $(this).parent().data('popupinfotext') +
-            '<br><br><iframe style="height: 30px;" src="' + url + '"></iframe></div>' +
-            '</div>' +
-            '');
-
-            // closes tooltip again
-            /* global document */
-            $(document).on('click', function(event) {
-                if (undefined === $(event.target).closest('.shariff-tooltip').get(0)) {
-                    if (undefined === $(event.target).closest('div.shariff').get(0)) {
-                        $('.shariff-tooltip').remove();
-                        $(this).off(event);
-                    }
-                }
-            });
-        });
         $socialshareElement.append($buttonList);
     }
 };
