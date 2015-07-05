@@ -204,14 +204,9 @@ Shariff.prototype = {
             if (typeof service.faName !== 'undefined') {
                 $shareLink.prepend('<span class="fa ' +  service.faName + '">');
             }
-            if(service.width){
-                $shareLink.data('width',service.width);
-            }
 
             if (service.popup) {
                 $shareLink.attr('rel', 'popup');
-            } else if(service.tooltip){
-                $shareLink.attr('rel', 'tooltip');
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }
