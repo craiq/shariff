@@ -3,13 +3,7 @@
 module.exports = function(shariff) {
     var url = encodeURIComponent(shariff.getURL());
     return {
-<<<<<<< HEAD
-		popup: true,
-//        tooltip: true,
-//		width: 200,
-=======
         popup: true,
->>>>>>> parent of e3e4716... 1.15 + like
         shareText: {
             'bg': 'cподеляне',
             'da': 'del',
