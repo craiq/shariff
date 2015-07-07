@@ -1,31 +1,43 @@
 .shariff {
     .facebooklike {
         a {
-            background-color: #3b5998;
+            background-color: @col-fb;
             &:hover {
-                background-color: #4273c8;
+                background-color: @col-fb-h;
             }
+			div {
+				border: 1px solid @col-fb;
+				&:hover {
+					border-color: @col-fb-h;
+				}
+			}
         }
-        .fa-facebook {
-            font-size: 22px;
+        .fa-facebooklike {
+            font-size: 19px;
 			&:before { content: @fa-var-facebook; }
+			@media (max-width: 550px) {
+				&:before { content: @fa-var-thumbs-o-up; }
+			}
         }
         .share_count {
-            color: #183a75;
-            background-color: #99adcf;
+            color: @col-fb-cs;
+            background-color: @col-fb-bgs;
         }
-    }
+		.shariff-tooltip {
+			iframe {
+				height: 21px;
+				width: 115px;
+			}
+		}
+   }
     .theme-white {
-        .facebook a {
-            color: #3b5998;
+        .facebooklike a {
+            color: @col-fb;
         }
     }
-}
-
-@media only screen and (min-width: 600px) {
-    .shariff {
-        .facebooklike .fa-facebook {
-            font-size: 19px;
-        }
-    }
+	.theme-grey {
+		.facebooklike a:hover {
+			background-color: @col-fb;
+		}
+	}
 }
