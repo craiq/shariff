@@ -1,0 +1,43 @@
+.shariff {
+    .facebooklike {
+        a {
+            background-color: @col-fb;
+            &:hover {
+                background-color: @col-fb-h;
+            }
+			div {
+				border: 1px solid @col-fb;
+				&:hover {
+					border-color: @col-fb-h;
+				}
+			}
+        }
+        .fa-facebooklike {
+            font-size: 19px;
+			&:before { content: @fa-var-facebook; }
+			@media (max-width: 550px) {
+				&:before { content: @fa-var-thumbs-o-up; }
+			}
+        }
+        .share_count {
+            color: @col-fb-cs;
+            background-color: @col-fb-bgs;
+        }
+		.shariff-tooltip {
+			iframe {
+				height: 21px;
+				width: 115px;
+			}
+		}
+   }
+    .theme-white {
+        .facebooklike a {
+            color: @col-fb;
+        }
+    }
+	.theme-grey {
+		.facebooklike a:hover {
+			background-color: @col-fb;
+		}
+	}
+}
