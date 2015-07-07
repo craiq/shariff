@@ -3,7 +3,9 @@
 module.exports = function(shariff) {
     var url = encodeURIComponent(shariff.getURL());
     return {
-        popup: true,
+		popup: true,
+//        tooltip: true,
+//		width: 200,
         shareText: {
             'de': 'teilen',
             'en': 'share',

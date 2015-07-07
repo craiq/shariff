@@ -1,29 +1,31 @@
 .shariff {
     .twitter {
         a {
-            background-color: @col-tw;
+            background-color: #55acee;
             &:hover {
-                background-color: @col-tw-h;
+                background-color: #32bbf5;
             }
-			div {
-				border: 1px solid @col-tw;
-				&:hover {
-					border-color: @col-tw-h;
-				}
-			}
         }
         .fa-twitter {
-            font-size: 24px;
+            font-size: 28px;
 			&:before { content: @fa-var-twitter; }
         }
         .share_count {
-            color: @col-tw-cs;
-            background-color: @col-tw-bgs;
+            color: #0174a4;
+            background-color: #96D4EE;
         }
     }
     .theme-white {
         .twitter a {
-            color: @col-tw;
+            color: #55acee;
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .shariff {
+        .twitter .fa-twitter {
+            font-size: 24px;
         }
     }
 }

@@ -172,12 +172,11 @@ Shariff.prototype = {
     // add value of shares for each service
     _updateCounts: function(data) {
         var self = this;
-		$('.shariff').addClass('backend');
         $.each(data, function(key, value) {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
             }
-            $(self.element).find('.' + key + ' a span:first').after('<span class="share_count">' + value);
+            $(self.element).find('.' + key + ' a').append('<span class="share_count">' + value);
         });
     },
 
@@ -188,44 +187,26 @@ Shariff.prototype = {
         var $socialshareElement = this.$socialshareElement();
 
         var themeClass = 'theme-' + this.options.theme;
+        var orientationClass = 'orientation-' + this.options.orientation;
         var serviceCountClass = 'col-' + this.options.services.length;
 
-        var $buttonList = $('<ul>').addClass(themeClass).addClass(serviceCountClass);
-		
-		if(this.options.orientation !== 'horizontal') {
-			$buttonList.addClass('orientation-' + this.options.orientation);
-		}
+        var $buttonList = $('<ul>').addClass(themeClass).addClass(orientationClass).addClass(serviceCountClass);
 
         // add html for service-links
         this.services.forEach(function(service) {
-            var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
+            var $li = $('<li class="shariff-button">').addClass(service.name);
             var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
-//			var $sharecount_test = '<span class="share_count">10';
-//			$('.shariff').addClass('backend');
 
-            var $shareLink = $('<a><div>')
-              .attr('href', service.shareUrl);
-			  
-			  $shareLink.children('div')
-			  .append($shareText);
+            var $shareLink = $('<a>')
+              .attr('href', service.shareUrl)
+              .append($shareText);
 
             if (typeof service.faName !== 'undefined') {
-                $shareLink.children('div').prepend('<span class="fa ' +  service.faName + '">');
+                $shareLink.prepend('<span class="fa ' +  service.faName + '">');
             }
-			
-//			$shareLink.find('span:first').after($sharecount_test);
-			
-            if(service.width){
-                $shareLink.data('width',service.width);
-            }
-			if(service.desc){
-				$shareLink.data('desc', self.getLocalized(service, 'desc'));
-			}
 
             if (service.popup) {
                 $shareLink.attr('rel', 'popup');
-            } else if(service.tooltip){
-                $shareLink.attr('rel', 'tooltip');
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }
@@ -235,7 +216,7 @@ Shariff.prototype = {
             $shareLink.attr('role', 'button');
             $shareLink.attr('aria-label', self.getLocalized(service, 'title'));
 
-            $li.children('div').append($shareLink);
+            $li.append($shareLink);
 
             $buttonList.append($li);
         });
@@ -254,59 +235,6 @@ Shariff.prototype = {
 
         });
 
-        $buttonList.on('click', '[rel="tooltip"]', function(e) {
-            e.preventDefault();
-            var url = $(this).attr('href'),
-				desc = '',
-				offset = '',
-				loaded = 0;
-
-            if ($(this).data('width')){
-                $(this).parent().width($(this).data('width'));
-            }
-            if ($(this).data('desc')){
-                desc = '<p>' + $(this).data('desc') + '</p>';
-            }
-
-			if($('.shariff-tooltip').length > 0) {
-				$('.shariff-tooltip').remove();
-			}
-			if($(window).width() - $(this).offset().left - $(this).width() < 180) {
-				$(this).closest('div').css('position', 'static');
-				var bottom = $(this).closest('ul').height() - $(this).height() - $(this).position().top;
-				offset = ' style="right:0;bottom:' + (bottom + 34) + 'px"';
-			}
-
-            $(this).parent().append('' +
-            '<div class="shariff-tooltip"' + offset + '>' +
-			desc +
-            '<iframe src="' + url + '"></iframe></div>' +
-            '</div>' +
-            '');
-
-            // closes tooltip again
-            /* global document */
-            $(document).on('click', function(event) {
-				if($(event.target).closest('a').attr('href') !== url && event.target !== $('.shariff-tooltip')[0] && event.target !== $('.shariff-tooltip p')[0]) {
-					$('.shariff-tooltip').remove();
-					if(!!offset) {
-						$(this).closest('div').css('position', '');
-					}
-					$(this).off(event);
-				}
-            });
-			$('.shariff-tooltip iframe').on('load', function(event) {
-				if(loaded > 0) {
-					$('.shariff-tooltip').remove();
-					if(!!offset) {
-						$(this).closest('div').css('position', '');
-					}
-					$(this).off(event);
-					loaded = 0;
-				}
-				loaded++;
-			});
-        });
         $socialshareElement.append($buttonList);
     }
 };

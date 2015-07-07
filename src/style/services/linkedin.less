@@ -1,34 +1,31 @@
 .shariff {
     .linkedin {
         a {
-            background-color: @col-li;
+            background-color: #0077b5;
             &:hover {
-                background-color: @col-li-h;
+                background-color: #0369a0;
             }
-			div {
-				border: 1px solid @col-li;
-				&:hover {
-					border-color: @col-li-h;
-				}
-			}
         }
         .fa-linkedin {
-            font-size: 19px;
+            font-size: 22px;
 			&:before { content: @fa-var-linkedin; }
         }
         .share_count {
-            color: @col-li-cs;
-            background-color: @col-li-bgs;
+            color: #004785;
+            background-color: #33AAE8;
         }
     }
     .theme-white {
         .linkedin a {
-            color: @col-li;
+            color: #0077b5;
         }
     }
-	.theme-grey {
-		.facebooklike a:hover {
-			background-color: @col-li;
-		}
-	}
+}
+
+@media only screen and (min-width: 600px) {
+    .shariff {
+        .linkedin .fa-linkedin {
+            font-size: 19px;
+        }
+    }
 }
