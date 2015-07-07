@@ -2,7 +2,7 @@
 
 var $ = require('jquery');
 var url = require('url');
-$(function(){
+
 var Shariff = function(element, options) {
     var self = this;
 
@@ -17,7 +17,6 @@ var Shariff = function(element, options) {
     // available services. /!\ Browserify can't require dynamically by now.
     var availableServices = [
         require('./services/facebook'),
-        require('./services/facebooklike'),
         require('./services/googleplus'),
         require('./services/info'),
         require('./services/linkedin'),
@@ -250,4 +249,3 @@ $('.shariff').each(function() {
         this.shariff = new Shariff(this);
     }
 });
-})
