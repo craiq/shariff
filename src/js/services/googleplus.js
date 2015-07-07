@@ -4,7 +4,10 @@ module.exports = function(shariff) {
     var url = encodeURIComponent(shariff.getURL());
     return {
         popup: true,
-        shareText: '+1',
+        shareText: {
+			'de': 'teilen',
+			'en': 'share'
+		},
         name: 'googleplus',
         faName: 'fa-google-plus',
         title: {
