@@ -7,6 +7,8 @@
     &::after {
         clear: both;
     }
+	margin-left: -4px;
+	margin-right: -4px;
 	.loop-col(@services);
 	.loop-col(@n, @i: 1) when (@i <= @n) {
 		.col-@{i} li {
@@ -15,9 +17,8 @@
 		.loop-col(@n, (@i + 1));
 	}
 	ul {
-		margin: 0 -4px;
+		margin: 0;
 		list-style: none;
-		display: inline-block;
 		padding: 0;
 		width: 100%;
 		position: relative;
@@ -29,6 +30,9 @@
 	&.backend li{
 		min-width: @min-width-backend;
 		max-width: @max-width-backend;
+		.share-count {
+			padding: 0 2px;
+		}
 	}
 	li {
 		float: left;
@@ -71,16 +75,33 @@
 	}
 	.orientation-vertical {
 		width: auto;
-		display: block;
 		li {
 			float: none;
 			width: 100%;
 		}
 	}
+	.theme-white li a {
+		background-color: #fff;
+		&:hover {
+			background-color: #efefef;
+		}
+		div {
+			border: 1px solid #ddd;
+			&:hover {
+				border: 1px solid #ddd;
+			}
+			span {
+				color: #666;
+			}
+			.share-count {
+				background-color: #fff;
+			}
+		}
+	}
 	.shariff-tooltip {
 		position: absolute;
-		background-color: #FFFFFF;
-		bottom: 40px;
+		background-color: #fff;
+		bottom: 36px;
 		color: #000000;
 		padding: 7px;
 		border: 1px solid #ddd;

@@ -19,12 +19,14 @@ var Shariff = function(element, options) {
         require('./services/facebook'),
         require('./services/facebooklike'),
         require('./services/googleplus'),
+        require('./services/googleplusplus'),
         require('./services/info'),
         require('./services/linkedin'),
         require('./services/mail'),
-        require('./services/pinterest'),
+ //       require('./services/pinterest'),
+        require('./services/print'),
         require('./services/twitter'),
-        require('./services/whatsapp'),
+ //       require('./services/whatsapp'),
         require('./services/xing')
     ];
 
@@ -54,7 +56,7 @@ Shariff.prototype = {
     // Defaults may be over either by passing "options" to constructor method
     // or by setting data attributes.
     defaults: {
-        theme      : 'color',
+        theme      : 'white',
 
         // URL to backend that requests social counts. null means "disabled"
         backendUrl : null,
@@ -93,7 +95,7 @@ Shariff.prototype = {
         referrerTrack: null,
 
         // services to be enabled in the following order
-        services   : [ 'facebook', 'facebooklike','twitter', 'googleplus'],
+        services   : [ 'facebook', 'facebooklike','twitter', 'googleplus', 'print'],
 
         title: function() {
             return $('title').text();
@@ -143,6 +145,10 @@ Shariff.prototype = {
     getInfoUrl: function() {
         return this.options.infoUrl;
     },
+	
+	getLang: function() {
+		return this.options.lang;
+	},
 
     getURL: function() {
         return this.getOption('url');
@@ -166,7 +172,12 @@ Shariff.prototype = {
         var baseUrl = url.parse(this.options.backendUrl, true);
         baseUrl.query.url = this.getURL();
         delete baseUrl.search;
-        return $.getJSON(url.format(baseUrl));
+		return $.ajax({
+			dataType: "json",
+			url: url.format(baseUrl),
+			crossDomain: true
+		});
+//        return $.getJSON(url.format(baseUrl));
     },
 
     // add value of shares for each service
@@ -197,35 +208,34 @@ Shariff.prototype = {
 		}
 
         // add html for service-links
-        this.services.forEach(function(service) {
+        this.services.forEach(function(service, key) {
             var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
             var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
 //			var $sharecount_test = '<span class="share_count">10';
 //			$('.shariff').addClass('backend');
 
-            var $shareLink = $('<a><div>')
-              .attr('href', service.shareUrl);
+            var $shareLink = $('<a><div>').data('key', key);
 			  
-			  $shareLink.children('div')
-			  .append($shareText);
-
+			$shareLink.children('div').append($shareText);
+			
+			if (typeof service.shareUrl !== 'undefined') {
+				$shareLink.attr('href', service.shareUrl);
+			} else {
+				$shareLink.attr('href', '#');
+			}
+			
             if (typeof service.faName !== 'undefined') {
                 $shareLink.children('div').prepend('<span class="fa ' +  service.faName + '">');
             }
 			
 //			$shareLink.find('span:first').after($sharecount_test);
 			
-            if(service.width){
-                $shareLink.data('width',service.width);
-            }
-			if(service.desc){
-				$shareLink.data('desc', self.getLocalized(service, 'desc'));
-			}
-
             if (service.popup) {
                 $shareLink.attr('rel', 'popup');
             } else if(service.tooltip){
                 $shareLink.attr('rel', 'tooltip');
+            } else if(service.pageprint){
+                $shareLink.attr('rel', 'pageprint');
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }
@@ -257,56 +267,62 @@ Shariff.prototype = {
         $buttonList.on('click', '[rel="tooltip"]', function(e) {
             e.preventDefault();
             var url = $(this).attr('href'),
-				desc = '',
-				offset = '',
-				loaded = 0;
-
-            if ($(this).data('width')){
-                $(this).parent().width($(this).data('width'));
+				tool = this,
+				loaded = 0,
+				w = 180,
+				service = self.services[$(this).data('key')];
+			
+            var $shariffTooltip =$('<div class="shariff-tooltip"></div>');
+			
+            if (service.width !== 'undefined'){
+                $(this).parent().width(service.width);
             }
-            if ($(this).data('desc')){
-                desc = '<p>' + $(this).data('desc') + '</p>';
-            }
+			if (service.desc !== 'undefined'){
+                $shariffTooltip.append('<p>' + self.getLocalized(service, 'desc') + '</p>');
+			}
 
-			if($('.shariff-tooltip').length > 0) {
+/*			if ($('.shariff-tooltip').length > 0) {
 				$('.shariff-tooltip').remove();
-			}
-			if($(window).width() - $(this).offset().left - $(this).width() < 180) {
+			}*/
+			$(this).closest('div').css('position', '');
+			if($(window).width() - $(this).offset().left < w) {
 				$(this).closest('div').css('position', 'static');
-				var bottom = $(this).closest('ul').height() - $(this).height() - $(this).position().top;
-				offset = ' style="right:0;bottom:' + (bottom + 34) + 'px"';
+				$shariffTooltip
+					.css('right', '4px')
+					.css('bottom', $(this).closest('ul').height() - $(this).height() - $(this).position().top + 36);
 			}
-
-            $(this).parent().append('' +
-            '<div class="shariff-tooltip"' + offset + '>' +
-			desc +
-            '<iframe src="' + url + '"></iframe></div>' +
-            '</div>' +
-            '');
+			
+			if(url !== '#') {
+				$shariffTooltip.append('<iframe src="' + url + '"></iframe></div>');
+			} else if(service.snippet !== 'undefined'){
+				$shariffTooltip.append(service.snippet);
+			}
+			
+			$(this).parent().append($shariffTooltip);
 
             // closes tooltip again
             /* global document */
             $(document).on('click', function(event) {
-				if($(event.target).closest('a').attr('href') !== url && event.target !== $('.shariff-tooltip')[0] && event.target !== $('.shariff-tooltip p')[0]) {
-					$('.shariff-tooltip').remove();
-					if(!!offset) {
-						$(this).closest('div').css('position', '');
-					}
+				if($(event.target).closest('li').find('a')[0] !== tool && $(event.target).closest('.shariff-tooltip').length === 0) {
+					$(tool).siblings('.shariff-tooltip').remove();
 					$(this).off(event);
 				}
             });
 			$('.shariff-tooltip iframe').on('load', function(event) {
 				if(loaded > 0) {
-					$('.shariff-tooltip').remove();
-					if(!!offset) {
-						$(this).closest('div').css('position', '');
-					}
+					$(tool).siblings('.shariff-tooltip').remove();
 					$(this).off(event);
 					loaded = 0;
 				}
 				loaded++;
 			});
         });
+		
+		$buttonList.on('click', '[rel="pageprint"]', function(e) {
+            e.preventDefault();
+			window.print();
+        });
+
         $socialshareElement.append($buttonList);
     }
 };
@@ -322,4 +338,4 @@ $('.shariff').each(function() {
         this.shariff = new Shariff(this);
     }
 });
-})
+});

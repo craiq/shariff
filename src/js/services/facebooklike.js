@@ -18,5 +18,5 @@ module.exports = function(shariff) {
 			'en': 'For privacy reasons, please confirm'
 		},
         shareUrl: 'https://www.facebook.com/plugins/like.php?href=' + url + shariff.getReferrerTrack() + '&width=80&layout=button&action=like&show_faces=false&share=false&height=30'
-    };
+	};
 };
