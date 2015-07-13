@@ -172,12 +172,11 @@ Shariff.prototype = {
         var baseUrl = url.parse(this.options.backendUrl, true);
         baseUrl.query.url = this.getURL();
         delete baseUrl.search;
-		return $.ajax({
+/*		return $.ajax({
 			dataType: "json",
 			url: url.format(baseUrl),
-			crossDomain: true
-		});
-//        return $.getJSON(url.format(baseUrl));
+		});*/
+        return $.getJSON(url.format(baseUrl));
     },
 
     // add value of shares for each service
