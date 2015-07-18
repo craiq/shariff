@@ -152,13 +152,13 @@ Shariff.prototype = {
 		return this.options.lang;
 	},
 	
-//-out	getFlattrID: function() {
-//-out		return this.options.flattrid;
-//-out	},
+	getFlattrID: function() {
+		return this.options.flattrid;
+	},
 
-//-out	getFlattrURL: function() {
-//-out		return this.options.flattrurl;
-//-out	},
+	getFlattrURL: function() {
+		return this.options.flattrurl;
+	},
 
     getURL: function() {
         return this.getOption('url');
