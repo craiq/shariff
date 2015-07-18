@@ -276,6 +276,12 @@ Shariff.prototype = {
 			}
 
 			$(this).closest('div').css('position', '');
+			if(url !== '#') {
+				$shariffTooltip.append('<iframe src="' + url + '"></iframe></div>');
+			} else if(service.snippet !== 'undefined'){
+				$shariffTooltip.append(service.snippet);
+			}
+			
 			if($(window).width() - $(this).offset().left < w) {
 				$(this).closest('div').css('position', 'static');
 				$shariffTooltip
@@ -283,15 +289,15 @@ Shariff.prototype = {
 					.css('bottom', $(this).closest('ul').height() - $(this).height() - $(this).position().top + 36);
 			}
 			
-			if(url !== '#') {
-				$shariffTooltip.append('<iframe src="' + url + '"></iframe></div>');
-			} else if(service.snippet !== 'undefined'){
-				$shariffTooltip.append(service.snippet);
-			}
-			
 			$(this).parent().append($shariffTooltip);
+			
+			if($(this).offset().top - $(window).scrollTop() < $('.shariff-tooltip').height() + 50) {
+				$shariffTooltip
+					.css('bottom', 'auto')
+					.css('top', '36px');
+			}
 
-            // closes tooltip again
+           // closes tooltip again
             /* global document */
             $(document).on('click', function(event) {
 				if($(event.target).closest('li').find('a')[0] !== tool && $(event.target).closest('.shariff-tooltip').length === 0) {
