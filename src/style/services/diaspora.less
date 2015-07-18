@@ -1,0 +1,33 @@
+.shariff {
+    .diaspora {
+        a {
+            background-color: @col-di;
+            &:hover {
+                background-color: @col-di-h;
+            }
+			div {
+				border: 1px solid @col-di;
+				&:hover {
+					border-color: @col-di-h;
+				}
+			}
+        }
+        .fa-times-circle {
+            font-size: 18px;
+			&:before { content: @fa-var-times-circle; }
+        }
+    }
+    .theme-white {
+        .diaspora a span {
+            color: @col-di;
+        }
+    }
+	.theme-grey {
+		.diaspora a:hover {
+			background-color: @col-di;
+			div {
+				border-color: @col-di;
+			}
+		}
+	}
+}
