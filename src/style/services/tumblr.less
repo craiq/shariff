@@ -1,0 +1,37 @@
+.shariff {
+    .tumblr {
+        a {
+            background-color: @col-tr;
+            &:hover {
+                background-color: @col-tr-h;
+            }
+			div {
+				border: 1px solid @col-tr;
+				&:hover {
+					border-color: @col-tr-h;
+				}
+			}
+        }
+        .fa-tumblr {
+            font-size: 19px;
+			&:before { content: @fa-var-tumblr; }
+        }
+        .share_count {
+            color: @col-tr-cs;
+            background-color: @col-tr-bgs;
+        }
+    }
+    .theme-white {
+        .tumblr a span {
+            color: @col-tr;
+        }
+    }
+	.theme-grey {
+		.tumblr a:hover {
+			background-color: @col-tr;
+			div {
+				border-color: @col-tr;
+			}
+		}
+	}
+}

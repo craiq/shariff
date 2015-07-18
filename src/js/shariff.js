@@ -23,10 +23,11 @@ var Shariff = function(element, options) {
         require('./services/info'),
         require('./services/linkedin'),
         require('./services/mail'),
- //       require('./services/pinterest'),
+        require('./services/pinterest'),
         require('./services/print'),
+        require('./services/tumblr'),
         require('./services/twitter'),
- //       require('./services/whatsapp'),
+        require('./services/whatsapp'),
         require('./services/xing')
     ];
 

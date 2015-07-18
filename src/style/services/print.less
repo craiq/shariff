@@ -16,16 +16,18 @@
             font-size: 18px;
 			&:before { content: @fa-var-print; }
         }
-/*		&:not(.orientation-vertical) {
-			float: right;
-		}*/
     }
     .theme-grey {
-        .info a {
-            background-color: #fff;
+        .print a {
             &:hover {
-                background-color: #efefef;
+                background-color: #828282;
+				div {
+					border-color: #828282;
+				}
             }
+			span {
+				color: #fff;
+			}
         }
     }
 
