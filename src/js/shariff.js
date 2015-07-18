@@ -188,7 +188,9 @@ Shariff.prototype = {
     // add value of shares for each service
     _updateCounts: function(data) {
         var self = this;
-		$('.shariff').addClass('backend');
+		if (data.length !== 0) {
+			$('.shariff').addClass('backend');
+		}
         $.each(data, function(key, value) {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
