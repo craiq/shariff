@@ -18,6 +18,7 @@ var Shariff = function(element, options) {
     var availableServices = [
         require('./services/facebook'),
         require('./services/facebooklike'),
+        require('./services/flattr'),
         require('./services/googleplus'),
         require('./services/googleplusplus'),
         require('./services/info'),
@@ -150,6 +151,14 @@ Shariff.prototype = {
 	getLang: function() {
 		return this.options.lang;
 	},
+	
+	getFlattrID: function() {
+		return this.options.flattrid;
+	},
+
+	getFlattrURL: function() {
+		return this.options.flattrurl;
+	},
 
     getURL: function() {
         return this.getOption('url');
@@ -214,7 +223,9 @@ Shariff.prototype = {
 //			var $sharecount_test = '<span class="share_count">10';
 //			$('.shariff').addClass('backend');
 
-            var $shareLink = $('<a><div>').data('key', key);
+            var $shareLink = $('<a><div>')
+				.data('key', key)
+				.attr('target', '_blank');
 			  
 			$shareLink.children('div').append($shareText);
 			
