@@ -18,18 +18,18 @@ var Shariff = function(element, options) {
     var availableServices = [
         require('./services/facebook'),
         require('./services/facebooklike'),
-//-out        require('./services/flattr'),
         require('./services/googleplus'),
         require('./services/googleplusplus'),
-//-out        require('./services/info'),
         require('./services/linkedin'),
-//-out       require('./services/mail'),
-//-out       require('./services/pinterest'),
         require('./services/print'),
-//-out        require('./services/tumblr'),
+        require('./services/xing'),
+        require('./services/flattr'),
+        require('./services/info'),
+        require('./services/mail'),
+        require('./services/pinterest'),
+        require('./services/tumblr'),
         require('./services/twitter'),
-//-out        require('./services/whatsapp'),
-        require('./services/xing')
+        require('./services/whatsapp'),
     ];
 
     // filter available services to those that are enabled and initialize them
@@ -216,8 +216,6 @@ Shariff.prototype = {
         this.services.forEach(function(service, key) {
             var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
             var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
-//			var $sharecount_test = '<span class="share_count">10';
-//			$('.shariff').addClass('backend');
 
             var $shareLink = $('<a><div>')
 				.data('key', key);
@@ -233,8 +231,6 @@ Shariff.prototype = {
             if (typeof service.faName !== 'undefined') {
                 $shareLink.children('div').prepend('<span class="fa ' +  service.faName + '">');
             }
-			
-//			$shareLink.find('span:first').after($sharecount_test);
 			
             if (service.popup) {
                 $shareLink.attr('rel', 'popup');
@@ -287,9 +283,6 @@ Shariff.prototype = {
                 $shariffTooltip.append('<p>' + self.getLocalized(service, 'desc') + '</p>');
 			}
 
-/*			if ($('.shariff-tooltip').length > 0) {
-				$('.shariff-tooltip').remove();
-			}*/
 			$(this).closest('div').css('position', '');
 			if($(window).width() - $(this).offset().left < w) {
 				$(this).closest('div').css('position', 'static');
