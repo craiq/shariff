@@ -47,7 +47,7 @@ var Shariff = function(element, options) {
 
     this._addButtonList();
 
-    if (this.options.backendUrl !== null) {
+    if (this.options.backendUrl !== 'undefined') {
         this.getShares().then( $.proxy( this._updateCounts, this ) );
     }
 
