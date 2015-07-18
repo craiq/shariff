@@ -1,7 +1,10 @@
 'use strict';
 
 module.exports = function(shariff) {
-    var url = encodeURIComponent(shariff.getFlattrURL());
+
+    var url = encodeURIComponent(shariff.options.flattrurl);
+	var id = shariff.options.flattrid;
+
     return {
 		blank: true,
         shareText: {
@@ -13,6 +16,6 @@ module.exports = function(shariff) {
             'de': 'Mit Flattr spenden',
             'en': 'spend with Flattr',
         },
-        shareUrl: 'https://flattr.com/submit/auto?url=' + url + '&amp;user_id=' + shariff.getFlattrID()
+        shareUrl: 'https://flattr.com/submit/auto?url=' + url + '&amp;user_id=' + id
     };
 };
