@@ -188,6 +188,7 @@ Shariff.prototype = {
     // add value of shares for each service
     _updateCounts: function(data) {
         var self = this;
+		console.log(data);
 		if (data.length !== 0) {
 			$('.shariff').addClass('backend');
 		}
