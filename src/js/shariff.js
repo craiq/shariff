@@ -2,7 +2,7 @@
 
 var $ = require('jquery');
 var url = require('url');
-$(function(){
+
 var Shariff = function(element, options) {
     var self = this;
 
@@ -18,17 +18,17 @@ var Shariff = function(element, options) {
     var availableServices = [
         require('./services/facebook'),
         require('./services/facebooklike'),
-        require('./services/flattr'),
+//-out        require('./services/flattr'),
         require('./services/googleplus'),
         require('./services/googleplusplus'),
-        require('./services/info'),
+//-out        require('./services/info'),
         require('./services/linkedin'),
-        require('./services/mail'),
-        require('./services/pinterest'),
+//-out       require('./services/mail'),
+//-out       require('./services/pinterest'),
         require('./services/print'),
-        require('./services/tumblr'),
+//-out        require('./services/tumblr'),
         require('./services/twitter'),
-        require('./services/whatsapp'),
+//-out        require('./services/whatsapp'),
         require('./services/xing')
     ];
 
@@ -58,7 +58,7 @@ Shariff.prototype = {
     // Defaults may be over either by passing "options" to constructor method
     // or by setting data attributes.
     defaults: {
-        theme      : 'white',
+        theme      : 'color',
 
         // URL to backend that requests social counts. null means "disabled"
         backendUrl : null,
@@ -152,13 +152,13 @@ Shariff.prototype = {
 		return this.options.lang;
 	},
 	
-	getFlattrID: function() {
-		return this.options.flattrid;
-	},
+//-out	getFlattrID: function() {
+//-out		return this.options.flattrid;
+//-out	},
 
-	getFlattrURL: function() {
-		return this.options.flattrurl;
-	},
+//-out	getFlattrURL: function() {
+//-out		return this.options.flattrurl;
+//-out	},
 
     getURL: function() {
         return this.getOption('url');
@@ -182,10 +182,6 @@ Shariff.prototype = {
         var baseUrl = url.parse(this.options.backendUrl, true);
         baseUrl.query.url = this.getURL();
         delete baseUrl.search;
-/*		return $.ajax({
-			dataType: "json",
-			url: url.format(baseUrl),
-		});*/
         return $.getJSON(url.format(baseUrl));
     },
 
@@ -224,8 +220,7 @@ Shariff.prototype = {
 //			$('.shariff').addClass('backend');
 
             var $shareLink = $('<a><div>')
-				.data('key', key)
-				.attr('target', '_blank');
+				.data('key', key);
 			  
 			$shareLink.children('div').append($shareText);
 			
@@ -348,5 +343,4 @@ $('.shariff').each(function() {
     if (!this.hasOwnProperty('shariff')) {
         this.shariff = new Shariff(this);
     }
-});
 });

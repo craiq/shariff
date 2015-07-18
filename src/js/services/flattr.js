@@ -3,6 +3,7 @@
 module.exports = function(shariff) {
     var url = encodeURIComponent(shariff.getFlattrURL());
     return {
+		blank: true,
         shareText: {
             'en': 'flattr',
         },

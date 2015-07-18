@@ -107,6 +107,9 @@ module.exports = function(grunt) {
             },
             demo: {
                 options: {
+                    modifyVars: {
+                        'fa-font-path': '"//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"'
+                    },
                     sourceMap: true,
                     outputSourceFiles: true,
                     sourceMapFileInline: true,
