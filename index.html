@@ -7,7 +7,26 @@
     <link href="http://www.heise.de/" rel="canonical">
     <meta property="DC.title" content="Shariff demo page">
     <meta name="DC.creator" content="heise online">
-    <style>article.slim {max-width:1200px}</style>
+    <style>article.slim {max-width:1200px} 
+	@media (min-width:600px) {
+		.article-left {
+			width: 30%;
+			min-width: 130px;
+			max-width: 190px;
+			float: left;
+			box-sizing: border-box;
+			padding-right: 30px; 
+		}
+		.article-cont {
+			width: 70%;
+    		float: left;
+		}
+		.article-cont p {
+			margin: 0px;
+			line-height: 1.4;
+		}
+	}
+	</style>
 </head>
 <body>
         	<h1 style="text-align:center"><a href="https://github.com/craiq/shariff/tree/Craiq/FB-like">Link zum Github Branch</a></h1>
@@ -92,14 +111,41 @@
     </dl>
     <article class="wide">
         <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h1>
-        <div style="display:inline-block"><aside id="article_extras">
+        <div style="display:inline-block"><aside class="article-left">
             <div data-backend-url="/shariff/?foo=bar" class="shariff" data-orientation="vertical"></div>
         </aside>
-        <section id="article_content">
+        <section class="article-cont">
             <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. </p>
         </section></div>
     </article>
     <hr style="clear:both">
+    <dl class="layout-hint">
+        <dt>data-backend-url:</dt><dd>/shariff/</dd>
+        <dt>data-theme:</dt><dd>white</dd>
+    </dl>
+    <article class="slim">
+        <header>
+            <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h1>
+            <div data-backend-url="counts.json" data-theme="white" class="shariff" data-services="[&quot;facebook&quot;,&quot;twitter&quot;,&quot;googleplus&quot;,&quot;mail&quot;,&quot;info&quot;]"></div>
+            <time datetime="2014-11-13T10:45:00+02:00">13.11.2014 - 12:45 Uhr</time>
+        </header>
+        <p class="deck">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+    </article>
+        <hr>
+    <dl class="layout-hint">
+        <dt>data-backend-url:</dt><dd>/shariff/?foo=bar</dd>
+        <dt>data-orientation:</dt><dd>vertical</dd>
+    </dl>
+    <article class="wide">
+        <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h1>
+        <div style="display:inline-block"><aside class="article-left">
+            <div data-backend-url="/shariff/?foo=bar" class="shariff" data-orientation="vertical"></div>
+        </aside>
+        <section class="article-cont">
+            <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. </p>
+        </section></div>
+    </article>
+        <hr style="clear:both">
     <dl class="layout-hint">
         <dt>data-backend-url:</dt><dd>/shariff/</dd>
         <dt>data-theme:</dt><dd>white</dd>
