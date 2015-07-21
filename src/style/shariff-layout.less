@@ -7,8 +7,8 @@
     &::after {
         clear: both;
     }
-	margin-left: -4px;
-	margin-right: -4px;
+/*	margin-left: -4px;
+	margin-right: -4px;*/
 	.loop-col(@services);
 	.loop-col(@n, @i: 1) when (@i <= @n) {
 		.col-@{i} li {
@@ -17,7 +17,7 @@
 		.loop-col(@n, (@i + 1));
 	}
 	ul {
-		margin: 0;
+		margin: 0 -4px;
 		list-style: none;
 		padding: 0;
 		width: 100%;
