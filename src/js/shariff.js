@@ -51,7 +51,6 @@ var Shariff = function(element, options) {
     if (this.options.backendUrl !== null) {
         this.getShares().then( $.proxy( this._updateCounts, this ) );
     }
-
 };
 
 Shariff.prototype = {
@@ -152,7 +151,7 @@ Shariff.prototype = {
 	getLang: function() {
 		return this.options.lang;
 	},
-	
+    
     getURL: function() {
         return this.getOption('url');
     },
@@ -176,12 +175,20 @@ Shariff.prototype = {
         baseUrl.query.url = this.getURL();
         delete baseUrl.search;
         return $.getJSON(url.format(baseUrl));
+/*        return $.ajax({
+          url: url.format(baseUrl),
+          dataType: 'jsonp',
+          jsonpCallback: 'callback',
+        });*/
     },
 
     // add value of shares for each service
     _updateCounts: function(data) {
         var self = this;
-		$(self.element).addClass('backend');
+        if ($(self.element).find('.facebook').length === 1 && $(self.element).find('.facebooklike').length === 1) {
+            data.facebook = data.facebook - data.facebooklike;
+        }
+        $(self.element).addClass('backend');
         $.each(data, function(key, value) {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
@@ -206,12 +213,12 @@ Shariff.prototype = {
 		}
 
         // add html for service-links
-        this.services.forEach(function(service, key) {
+        this.services.forEach(function(service) {
             var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
             var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
 
             var $shareLink = $('<a><div>')
-				.data('key', key);
+				.data('key', service.name);
 			  
 			$shareLink.children('div').append($shareText);
 			
