@@ -64,7 +64,7 @@ return De(this,function(t,n,r){var i;return ie.isWindow(t)?t.document.documentEl
 "use strict";module.exports=function(e){return{pageprint:!0,shareText:{de:"drucken",en:"print"},name:"print",faName:"fa-print",title:{de:"Diese Seite drucken",en:"print this page"}}};
 
 },{}],18:[function(require,module,exports){
-"use strict";module.exports=function(e){var t=encodeURIComponent(e.getURL());return{popup:!0,shareText:{de:"teilen",en:"share"},name:"reddit",faName:"fa-reddit",title:{de:"Bei Reddit teilen",en:"Share on Reddit"},shareUrl:"https://reddit.com/submit?url="+t+e.getReferrerTrack()}};
+"use strict";module.exports=function(e){var t=encodeURIComponent(e.getURL()),r=encodeURIComponent(e.getTitle());return{popup:!0,shareText:{de:"teilen",en:"share"},name:"reddit",faName:"fa-reddit",title:{de:"Bei Reddit teilen",en:"Share on Reddit"},shareUrl:"https://reddit.com/submit?url="+t+"&title="+r+e.getReferrerTrack()}};
 
 },{}],19:[function(require,module,exports){
 "use strict";module.exports=function(e){var r=encodeURIComponent(e.getURL());return{popup:!0,shareText:{de:"teilen",en:"share"},name:"tumblr",faName:"fa-tumblr",title:{de:"Bei Tumblr teilen",en:"Share on Tumblr"},shareUrl:"https://www.tumblr.com/share/link?url="+r+e.getReferrerTrack()}};

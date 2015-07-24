@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = function(shariff) {
-    var url = encodeURIComponent(shariff.getURL());
+    var url = encodeURIComponent(shariff.getURL()),
+        title = encodeURIComponent(shariff.getTitle());
+    
     return {
         popup: true,
         shareText: {
@@ -14,6 +16,6 @@ module.exports = function(shariff) {
             'de': 'Bei Reddit teilen',
             'en': 'Share on Reddit',
         },
-        shareUrl: 'https://reddit.com/submit?url=' + url + shariff.getReferrerTrack()
+        shareUrl: 'https://reddit.com/submit?url=' + url + '&title=' + title + shariff.getReferrerTrack()
     };
 };

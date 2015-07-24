@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function(shariff) {
-    var url = encodeURIComponent(shariff.getURL());
-	var title = encodeURIComponent(shariff.getTitle());
+    var url = encodeURIComponent(shariff.getURL()),
+	    title = encodeURIComponent(shariff.getTitle());
     return {
         popup: true,
         shareText: {
