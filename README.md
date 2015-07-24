@@ -1,6 +1,6 @@
 # Shariff – Give Social Media Buttons Some Privacy
 
-Shariff enables website users to share their favorite content without compromising their privacy. [Demo](http://heiseonline.github.io/shariff/)
+Shariff enables website users to share their favorite content without compromising their privacy. [Demo](http://craiq.github.io/shariff/)
 
 ![Shariff Logo © 2015 Heise Medien](http://www.heise.de/icons/ho/shariff-logo.png)
 
