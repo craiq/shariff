@@ -5,6 +5,7 @@ Um die Privatsphäre ihrer Besucher gegenüber den Social-Media-Netzwerken zu be
 ![Shariff Logo © 2015 Heise Medien](http://www.heise.de/icons/ho/shariff-logo.png)
 
 Verfügbare Module
+
     * Diaspora
     * Facebook
     * Facebook like

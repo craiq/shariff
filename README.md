@@ -5,6 +5,7 @@ Shariff enables website users to share their favorite content without compromisi
 ![Shariff Logo © 2015 Heise Medien](http://www.heise.de/icons/ho/shariff-logo.png)
 
 Available Modules
+
     * Diaspora
     * Facebook
     * Facebook like
