@@ -4,6 +4,24 @@ Shariff enables website users to share their favorite content without compromisi
 
 ![Shariff Logo © 2015 Heise Medien](http://www.heise.de/icons/ho/shariff-logo.png)
 
+Available Modules
+    * Diaspora
+    * Facebook
+    * Facebook like
+    * Google+
+    * Google+ +1
+    * Linkedin
+    * Pinterest
+    * Reddit
+    * Stumbleupon
+    * Tumblr
+    * Twitter
+    * Whatsapp
+    * Xing
+    * E-Mail
+    * Print
+    * Info
+
 Facebook, Google+ and Twitter supply official sharing code snippets which quietly siphon personal data from all page visitors. Shariff enables visitors to see how popular your page is on Facebook and share your content with others without needless data leaks.
 
 Shariff `(/ˈʃɛɹɪf/)` is an open-source, low-maintenance, high-privacy solution maintained by German computer magazine c't and heise online.
