@@ -32,6 +32,7 @@ var Shariff = function(element, options) {
         require('./services/twitter'),
         require('./services/whatsapp'),
         require('./services/diaspora'),
+        require('./services/stumbleupon'),
     ];
 
     // filter available services to those that are enabled and initialize them
