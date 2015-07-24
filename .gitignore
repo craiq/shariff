@@ -1,9 +1,4 @@
-demo/*.js
-demo/*.css
-demo/build
-demo/css
-demo/fonts
-demo/html
+demo
 *.map
 *.bak
 #build/*
