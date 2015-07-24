@@ -1,3 +1,9 @@
+// Pinterest
+@col-pi: #bd081c;
+@col-pi-h: lighten(@col-pi, @lighten);
+@col-pi-cs: darken(@col-pi, @darken);
+@col-pi-bgs: lighten(@col-pi, @lighten_bg);
+
 .shariff {
     .pinterest {
         a {
@@ -24,13 +30,16 @@
         }
     }
     .theme-white {
-        .pinterest a {
+        .pinterest a span {
             color: @col-pi;
         }
     }
 	.theme-grey {
-		.facebooklike a:hover {
+		.pinterest a:hover {
 			background-color: @col-pi;
+			div {
+				border-color: @col-pi;
+			}
 		}
 	}
 }

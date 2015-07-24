@@ -17,14 +17,22 @@ var Shariff = function(element, options) {
     // available services. /!\ Browserify can't require dynamically by now.
     var availableServices = [
         require('./services/facebook'),
+        require('./services/facebooklike'),
         require('./services/googleplus'),
-        require('./services/info'),
+        require('./services/googleplusplus'),
         require('./services/linkedin'),
+        require('./services/print'),
+        require('./services/xing'),
+        require('./services/flattr'),
+        require('./services/info'),
         require('./services/mail'),
         require('./services/pinterest'),
+        require('./services/reddit'),
+        require('./services/tumblr'),
         require('./services/twitter'),
         require('./services/whatsapp'),
-        require('./services/xing')
+        require('./services/diaspora'),
+        require('./services/stumbleupon'),
     ];
 
     // filter available services to those that are enabled and initialize them
@@ -45,7 +53,6 @@ var Shariff = function(element, options) {
     if (this.options.backendUrl !== null) {
         this.getShares().then( $.proxy( this._updateCounts, this ) );
     }
-
 };
 
 Shariff.prototype = {
@@ -79,7 +86,7 @@ Shariff.prototype = {
             return this.getMeta('DC.title') || this.getTitle();
         },
 
-        mailBody: function() { return '<' + this.getURL() + '>'; },
+        mailBody: function() { return this.getURL(); },
 
         // Media (e.g. image) URL to be shared
         mediaUrl: null,
@@ -92,7 +99,7 @@ Shariff.prototype = {
         referrerTrack: null,
 
         // services to be enabled in the following order
-        services   : ['twitter', 'facebook', 'googleplus', 'info'],
+        services   : [ 'facebook', 'facebooklike','twitter', 'googleplus', 'print'],
 
         title: function() {
             return $('title').text();
@@ -142,7 +149,11 @@ Shariff.prototype = {
     getInfoUrl: function() {
         return this.options.infoUrl;
     },
-
+	
+	getLang: function() {
+		return this.options.lang;
+	},
+    
     getURL: function() {
         return this.getOption('url');
     },
@@ -166,12 +177,19 @@ Shariff.prototype = {
         baseUrl.query.url = this.getURL();
         delete baseUrl.search;
         return $.getJSON(url.format(baseUrl));
+/*        return $.ajax({
+          url: url.format(baseUrl),
+          dataType: 'jsonp',
+        });*/
     },
 
     // add value of shares for each service
     _updateCounts: function(data) {
         var self = this;
-		$('.shariff').addClass('backend');
+        if ($(self.element).find('.facebook').length === 1 && $(self.element).find('.facebooklike').length === 1) {
+            data.facebook = data.facebook - data.facebooklike;
+        }
+        $(self.element).addClass('backend');
         $.each(data, function(key, value) {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
@@ -196,22 +214,31 @@ Shariff.prototype = {
 		}
 
         // add html for service-links
-        this.services.forEach(function(service) {
+        this.services.forEach(function(service, key) {
             var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
             var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
 
             var $shareLink = $('<a><div>')
-              .attr('href', service.shareUrl);
+				.data('key', key);
 			  
-			  $shareLink.children('div')
-			  .append($shareText);
-
+			$shareLink.children('div').append($shareText);
+			
+			if (typeof service.shareUrl !== 'undefined') {
+				$shareLink.attr('href', service.shareUrl);
+			} else {
+				$shareLink.attr('href', '#');
+			}
+			
             if (typeof service.faName !== 'undefined') {
                 $shareLink.children('div').prepend('<span class="fa ' +  service.faName + '">');
             }
 			
             if (service.popup) {
                 $shareLink.attr('rel', 'popup');
+            } else if(service.tooltip){
+                $shareLink.attr('rel', 'tooltip');
+            } else if(service.pageprint){
+                $shareLink.attr('rel', 'pageprint');
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }
@@ -238,6 +265,68 @@ Shariff.prototype = {
 
             global.window.open(url, windowName, windowSize);
 
+        });
+
+        $buttonList.on('click', '[rel="tooltip"]', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href'),
+				tool = this,
+				loaded = 0,
+				w = 180,
+				service = self.services[$(this).data('key')];
+			
+            var $shariffTooltip =$('<div class="shariff-tooltip"></div>');
+			
+            if (service.width !== 'undefined'){
+                $(this).parent().width(service.width);
+            }
+			if (service.desc !== 'undefined'){
+                $shariffTooltip.append('<p>' + self.getLocalized(service, 'desc') + '</p>');
+			}
+
+			$(this).closest('div').css('position', '');
+			if(url !== '#') {
+				$shariffTooltip.append('<iframe src="' + url + '"></iframe></div>');
+			} else if(service.snippet !== 'undefined'){
+				$shariffTooltip.append(service.snippet);
+			}
+			
+			if($(window).width() - $(this).offset().left < w) {
+				$(this).closest('div').css('position', 'static');
+				$shariffTooltip
+					.css('right', '4px')
+					.css('bottom', $(this).closest('ul').height() - $(this).height() - $(this).position().top + 36);
+			}
+			
+			$(this).parent().append($shariffTooltip);
+			
+			if($(this).offset().top - $(window).scrollTop() < $('.shariff-tooltip').height() + 50) {
+				$shariffTooltip
+					.css('bottom', 'auto')
+					.css('top', '36px');
+			}
+
+           // closes tooltip again
+            /* global document */
+            $(document).on('click', function(event) {
+				if($(event.target).closest('li').find('a')[0] !== tool && $(event.target).closest('.shariff-tooltip').length === 0) {
+					$(tool).siblings('.shariff-tooltip').remove();
+					$(this).off(event);
+				}
+            });
+			$('.shariff-tooltip iframe').on('load', function(event) {
+				if(loaded > 0) {
+					$(tool).siblings('.shariff-tooltip').remove();
+					$(this).off(event);
+					loaded = 0;
+				}
+				loaded++;
+			});
+        });
+		
+		$buttonList.on('click', '[rel="pageprint"]', function(e) {
+            e.preventDefault();
+			window.print();
         });
 
         $socialshareElement.append($buttonList);

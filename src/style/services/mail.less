@@ -1,3 +1,7 @@
+// Mail
+@col-ma: #999;
+@col-ma-h: lighten(@col-ma, @lighten);
+
 .shariff {
     .mail {
         a {
@@ -18,13 +22,16 @@
         }
     }
     .theme-white {
-        .mail a {
+        .mail a span {
             color: @col-ma;
         }
     }
 	.theme-grey {
-		.facebooklike a:hover {
+		.mail a:hover {
 			background-color: @col-ma;
+			div {
+				border-color: @col-ma;
+			}
 		}
 	}
 }

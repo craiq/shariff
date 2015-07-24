@@ -8,12 +8,12 @@ module.exports = function(shariff) {
             'de': 'teilen',
             'en': 'share',
         },
-        name: 'facebook',
-        faName: 'fa-facebook',
+        name: 'tumblr',
+        faName: 'fa-tumblr',
         title: {
-            'de': 'Bei Facebook teilen',
-            'en': 'Share on Facebook',
+            'de': 'Bei Tumblr teilen',
+            'en': 'Share on Tumblr',
         },
-        shareUrl: 'https://www.facebook.com/sharer/sharer.php?u=' + url + shariff.getReferrerTrack()
+        shareUrl: 'https://www.tumblr.com/share/link?url=' + url + shariff.getReferrerTrack()
     };
 };

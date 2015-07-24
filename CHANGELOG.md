@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.16.0 2015-07-13
+
+* Made license SPDX compatible.
+* Updated grunt-connect-proxy dependency. (medienverbinder)
+
 ## v1.15.0 2015-06-30
 
 * Fixed pinterest link. (startef)

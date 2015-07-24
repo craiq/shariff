@@ -1,3 +1,9 @@
+// Xing
+@col-xi: #126567;
+@col-xi-h: lighten(@col-xi, @lighten);
+@col-xi-cs: darken(@col-xi, @darken);
+@col-xi-bgs: lighten(@col-xi, @lighten_bg);
+
 .shariff {
     .xing {
         a {
@@ -22,8 +28,16 @@
         }
     }
     .theme-white {
-        .xing a {
+        .xing a span {
             color: @col-xi;
-        }
+       }
     }
+	.theme-grey {
+		.xing a:hover {
+			background-color: @col-xi;
+			div {
+				border-color: @col-xi;
+			}
+		}
+	}
 }

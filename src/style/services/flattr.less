@@ -1,0 +1,43 @@
+// Flattr
+@col-fl: #f67c1a;
+@col-fl-h: lighten(@col-fl, @lighten);
+@col-fl-cs: darken(@col-fl, @darken);
+@col-fl-bgs: lighten(@col-fl, @lighten_bg);
+
+.shariff {
+    .flattr {
+        a {
+            background-color: @col-fl;
+            &:hover {
+                background-color: @col-fl-h;
+            }
+			div {
+				border: 1px solid @col-fl;
+				&:hover {
+					border-color: @col-fl-h;
+				}
+			}
+        }
+        .fa-money {
+            font-size: 19px;
+			&:before { content: @fa-var-money; }
+        }
+        .share_count {
+            color: @col-fl-cs;
+            background-color: @col-fl-bgs;
+        }
+    }
+    .theme-white {
+        .flattr a span {
+            color: @col-fl;
+        }
+    }
+	.theme-grey {
+		.flattr a:hover {
+			background-color: @col-fl;
+			div {
+				border-color: @col-fl;
+			}
+		}
+	}
+}

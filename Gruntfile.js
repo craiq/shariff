@@ -107,6 +107,9 @@ module.exports = function(grunt) {
             },
             demo: {
                 options: {
+                    modifyVars: {
+                        'fa-font-path': '"//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"'
+                    },
                     sourceMap: true,
                     outputSourceFiles: true,
                     sourceMapFileInline: true,
@@ -190,7 +193,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-hapi');
 
     grunt.registerTask('test', ['jshint']);
-    grunt.registerTask('build', ['test', 'less:demo', 'less:dist', 'less:dist_min', 'browserify:dist_complete_min', 'browserify:dist_min']);
+    grunt.registerTask('build', ['test', 'less:demo', 'less:dist', 'less:dist_min', 'browserify:dist_complete_min', 'browserify:dist_min', 'browserify:demo']);
     grunt.registerTask('demo', ['copy:demo', 'less:demo', 'browserify:demo', 'hapi', 'configureProxies:demo', 'connect']);
     grunt.registerTask('default', ['test', 'demo']);
 };

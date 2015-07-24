@@ -1,3 +1,14 @@
+// Breite der Elemente mit/ohne Backend
+@max-width: 160px;
+@max-width-backend: 160px;
+@min-width: 40px;
+@min-width-backend: 80px;
+
+//// Farben der Services
+@lighten: 10%;
+@lighten_bg: 40%;
+@darken: 10%;
+
 .shariff {
     &::after,
     &::before {
@@ -7,6 +18,8 @@
     &::after {
         clear: both;
     }
+/*	margin-left: -4px;
+	margin-right: -4px;*/
 	.loop-col(@services);
 	.loop-col(@n, @i: 1) when (@i <= @n) {
 		.col-@{i} li {
@@ -17,7 +30,6 @@
 	ul {
 		margin: 0 -4px;
 		list-style: none;
-		display: inline-block;
 		padding: 0;
 		width: 100%;
 		position: relative;
@@ -29,6 +41,9 @@
 	&.backend li{
 		min-width: @min-width-backend;
 		max-width: @max-width-backend;
+		.share-count {
+			padding: 0 2px;
+		}
 	}
 	li {
 		float: left;
@@ -36,6 +51,7 @@
 		padding-right: 4px;
 		margin-bottom: 8px;
 		width: 100%;
+		box-sizing: border-box;
 		& > div {
 			position: relative;
 		}
@@ -47,6 +63,7 @@
 			div {
 				height: 28px;
 				overflow: hidden;
+				box-sizing: content-box;
 				span {
 					display: inline-block;
 					line-height: 28px;
@@ -61,9 +78,10 @@
 					float: right;
 					min-width: 30px;
 					text-align: center;
+					padding: 0 2px;
 				}
 				.share_text {
-					min-width: 38px;
+					min-width: 42px;
 					padding-right: 4px;
 				}
 			}
@@ -71,10 +89,58 @@
 	}
 	.orientation-vertical {
 		width: auto;
-		display: block;
 		li {
 			float: none;
 			width: 100%;
+			div {
+				text-align: left;
+			}
 		}
+	}
+	.theme-white li a {
+		background-color: #fff;
+		&:hover {
+			background-color: #efefef;
+		}
+		div {
+			border: 1px solid #ddd;
+			&:hover {
+				border: 1px solid #ddd;
+			}
+			span {
+				color: #666;
+			}
+			.share-count {
+				background-color: #fff;
+			}
+		}
+	}
+	.theme-grey li a {
+		background-color: #b0b0b0;
+		div {
+			border: 1px solid #b0b0b0;
+			.share_count {
+				background-color: #ccc;
+				color: #333;
+			}
+		}
+    }
+
+	.shariff-tooltip {
+		position: absolute;
+		background-color: #fff;
+		bottom: 36px;
+		color: #000000;
+		padding: 7px;
+		border: 1px solid #ddd;
+		width: 180px;
+		z-index: 100;
+		iframe {
+			display: block;
+			border: none;
+		}
+	}
+	@media (max-width: 550px) {
+		text-align: center;
 	}
 }
