@@ -178,7 +178,6 @@ Shariff.prototype = {
 /*        return $.ajax({
           url: url.format(baseUrl),
           dataType: 'jsonp',
-          jsonpCallback: 'callback',
         });*/
     },
 
