@@ -1,1 +1,1 @@
-grunt build
+grunt browserify:dist_min
