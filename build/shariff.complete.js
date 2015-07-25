@@ -43,7 +43,7 @@ return De(this,function(t,n,r){var i;return ie.isWindow(t)?t.document.documentEl
 "use strict";module.exports=function(e){var t=encodeURIComponent(e.getURL());return{tooltip:!0,shareText:{en:"like"},name:"facebooklike",faName:"fa-facebooklike",title:{de:"Gefällt mir bei Facebook ",en:"Like on Facebook"},desc:{de:"Aus Datenschutzgründen bitte bestätigen",en:"For privacy reasons, please confirm"},shareUrl:"https://www.facebook.com/plugins/like.php?href="+t+e.getReferrerTrack()+"&width=80&layout=button&action=like&show_faces=false&share=false&height=30"}};
 
 },{}],11:[function(require,module,exports){
-"use strict";module.exports=function(t){var e=encodeURIComponent(t.options.flattrurl),r=t.options.flattrid;return{blank:!0,shareText:{en:"flattr"},name:"flattr",faName:"fa-money",title:{de:"Mit Flattr spenden",en:"spend with Flattr"},shareUrl:"https://flattr.com/submit/auto?url="+e+"&amp;user_id="+r}};
+"use strict";module.exports=function(t){var e=encodeURIComponent(t.options.flattrurl),n="";return"undefined"!=typeof t.options.flattrid&&(n="&amp;user_id="+t.options.flattrid),{blank:!0,shareText:{en:"flattr"},name:"flattr",faName:"fa-money",title:{de:"Mit Flattr spenden",en:"spend with Flattr"},shareUrl:"https://flattr.com/submit/auto?url="+e+n}};
 
 },{}],12:[function(require,module,exports){
 "use strict";module.exports=function(e){var o=encodeURIComponent(e.getURL());return{popup:!0,shareText:{de:"teilen",en:"share"},name:"googleplus",faName:"fa-google-plus",title:{de:"Bei Google+ teilen",en:"Share on Google+"},shareUrl:"https://plus.google.com/share?url="+o+e.getReferrerTrack()}};
