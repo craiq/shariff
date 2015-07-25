@@ -6,6 +6,7 @@ Um die Privatsphäre ihrer Besucher gegenüber den Social-Media-Netzwerken zu be
 
 Verfügbare Module
 
+    * Bitcoin
     * Diaspora
     * Facebook
     * Facebook like
@@ -113,12 +114,16 @@ Für den Aufruf von `grunt demo` muss [Grunt CLI](http://gruntjs.com/getting-sta
 | `data-media-url` | Zu teilendes Bild (pinterest) | `null` |
 | `data-orientation` | Anordnung der Buttons. Verfügbar: `horizontal`, `vertical` | `horizontal`  |
 | `data-referrer-track` | Wenn angegeben, wird dieser String an die geteilte URL angehängt. Mit `null` deaktivieren. | `null` |
-| `data-services`   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` <br> Verfügbare Dienste: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `info`, `diaspora`, `reddit`, `stumbleupon` | Facebook, Facebook-Like, Google+, Twitter, Drucken |
+| `data-services`   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` <br> Verfügbare Dienste: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, Drucken |
 | `data-theme`       | Farbschema auswählen. Verfügbar: `color`, `grey` und `white`. | `color` |
 | `data-title`       | Titel der zu teilenden Seite. | Entweder `DC.title`/`DC.creator` oder `<title>` |
 | `data-url`         | URL, die geteilt werden soll. | Wenn `data-url` nicht gesetzt ist, wird `link[rel="canonical"]`, `meta[property="og:url"]` oder `location.href` verwendet. |
 | `data-FlattrID`       | Ihr Benutzername auf Flattr. | `undefined` |
 | `data-FlattrURL`       | URL zu dem Ding | `undefined` |
+| `data-btc`       | Bitcoin Adresse | `undefined` |
+| `data-btcAmount`       | vordefinierte Menge Bitcoins | `undefined` |
+| `data-btcLabel`       | Bitcoin Label | `undefined` |
+| `data-btcMessage`       | Bitcoin Nachricht | `undefined` |
 
 
 ## Backends
