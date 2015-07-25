@@ -1,0 +1,43 @@
+// Bitcoin
+@col-bt: #F2911B;
+@col-bt-h: lighten(@col-bt, @lighten);
+@col-bt-cs: darken(@col-bt, @darken);
+@col-bt-bgs: lighten(@col-bt, @lighten_bg);
+
+.shariff {
+    .bitcoin {
+        a {
+            background-color: @col-bt;
+            &:hover {
+                background-color: @col-bt-h;
+            }
+			div {
+				border: 1px solid @col-bt;
+				&:hover {
+					border-color: @col-bt-h;
+				}
+			}
+        }
+        .fa-btc {
+            font-size: 19px;
+			&:before { content: @fa-var-btc; }
+        }
+        .share_count {
+            color: @col-bt-cs;
+            background-color: @col-bt-bgs;
+        }
+    }
+    .theme-white {
+        .bitcoin a span {
+            color: @col-bt;
+        }
+    }
+	.theme-grey {
+		.bitcoin a:hover {
+			background-color: @col-bt;
+			div {
+				border-color: @col-bt;
+			}
+		}
+	}
+}

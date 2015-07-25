@@ -35,8 +35,9 @@ var Shariff = function(element, options) {
         require('./services/whatsapp'),
         require('./services/diaspora'),
         require('./services/stumbleupon'),
+        require('./services/bitcoin'),
     ];
-
+    
     // filter available services to those that are enabled and initialize them
     this.services = $.map(this.options.services, function(serviceName) {
         var service;
