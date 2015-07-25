@@ -4,7 +4,9 @@ module.exports = function(shariff) {
     var url = encodeURIComponent(shariff.getURL());
     return {
         tooltip: true,
-        shareText: '+1',
+        shareText: {
+			'en': '+1',
+		},
         name: 'googleplusplus',
         faName: 'fa-google-plus',
         title: {
