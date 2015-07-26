@@ -226,7 +226,7 @@ Shariff.prototype = {
         var $socialshareElement = this.$socialshareElement();
 
         var themeClass = 'theme-' + this.options.theme;
-        var serviceCountClass = 'col-' + this.options.services.length;
+        var serviceCountClass = 'col-' + this.services.length;
 
         var $buttonList = $('<ul>').addClass(themeClass).addClass(serviceCountClass);
 		
