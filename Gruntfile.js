@@ -96,7 +96,7 @@ module.exports = function(grunt) {
             options: {
                 banner: '<%= meta.banner %>',
                 paths: [
-                    'node_modules/font-awesome/less',
+//                    'node_modules/font-awesome/less',
                     'node_modules/shariff/src/style'
                 ],
                 plugins: [
