@@ -1,0 +1,1 @@
+grunt browserify:dist_min

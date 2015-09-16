@@ -1,8 +1,28 @@
 # Shariff – Schützen und teilen
 
-Um die Privatsphäre ihrer Besucher gegenüber den Social-Media-Netzwerken zu bewahren, können Webseiten-Betreiber mit dem Projekt Shariff eigene Teilen-Buttons integrieren.  [Demo](http://heiseonline.github.io/shariff/)
+Um die Privatsphäre ihrer Besucher gegenüber den Social-Media-Netzwerken zu bewahren, können Webseiten-Betreiber mit dem Projekt Shariff eigene Teilen-Buttons integrieren.  [Demo](http://craiq.github.io/shariff/)
 
 ![Shariff Logo © 2015 Heise Medien](http://www.heise.de/icons/ho/shariff-logo.png)
+
+Verfügbare Module
+
+    * Bitcoin
+    * Diaspora
+    * Facebook
+    * Facebook like
+    * Google+
+    * Google+ +1
+    * Linkedin
+    * Pinterest
+    * Reddit
+    * Stumbleupon
+    * Tumblr
+    * Twitter
+    * Whatsapp
+    * Xing
+    * E-Mail
+    * Print
+    * Info
 
 Der Code der offiziellen Buttons von Facebook, Google+ und Twitter überträgt von jedem Besucher kennzeichnende Daten an die Social-Media-Netzwerke. Shariff erzeugtze hingegen Share-Buttons, die mit einem Klick teilen, die Anzahl der Likes, Tweets und Plus-Ones für die aktuelle Seite anzeigen und trotzdem keine unnötigen Daten übertragen.
 
@@ -87,17 +107,24 @@ Für den Aufruf von `grunt demo` muss [Grunt CLI](http://gruntjs.com/getting-sta
 | Attribut         | Beschreibung | Default |
 |------------------|--------------|---------|
 | `data-backend-url` | Pfad zum Shariff-[Backend](#backends). Der Wert `null` deaktiviert die Anzeige von Share-Counts.  | `null` |
-| `data-lang`      | Lokalisierung auswählen. Verfügbar: `bg`, `de`, `en`, `es`, `fi`, `hr`, `hu`, `ja`, `ko`, `no`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `tr`, `zh` | `de` |
+| `data-lang`      | Lokalisierung auswählen. Verfügbar: `de`, `en` | `de` |
 | `data-mail-body` | Wenn `data-mail-url` ein `mailto:`-Link ist, wird dieser Wert als Mail-Body verwendet. | siehe `data-url` |
 | `data-mail-subject` | Wenn `data-mail-url` ein `mailto:`-Link ist, wird dieser Wert als Mail-Betreff verwendet. | siehe `data-title` |
 | `data-mail-url`  | Der Link des `mail`-Buttons | `?view=mail` |
 | `data-media-url` | Zu teilendes Bild (pinterest) | `null` |
 | `data-orientation` | Anordnung der Buttons. Verfügbar: `horizontal`, `vertical` | `horizontal`  |
 | `data-referrer-track` | Wenn angegeben, wird dieser String an die geteilte URL angehängt. Mit `null` deaktivieren. | `null` |
-| `data-services`   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` <br> Verfügbare Dienste: `twitter`, `facebook`, `googleplus`, `linkedin`, `pinterest`, `xing`, `whatsapp`, `mail`, `info` | Twitter, Facebook, Google+ |
-| `data-theme`       | Farbschema auswählen. Verfügbar: `standard`, `grey` und `white`. | `standard` |
+| `data-services`   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` <br> Verfügbare Dienste: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, Drucken |
+| `data-theme`       | Farbschema auswählen. Verfügbar: `color`, `grey` und `white`. | `color` |
 | `data-title`       | Titel der zu teilenden Seite. | Entweder `DC.title`/`DC.creator` oder `<title>` |
 | `data-url`         | URL, die geteilt werden soll. | Wenn `data-url` nicht gesetzt ist, wird `link[rel="canonical"]`, `meta[property="og:url"]` oder `location.href` verwendet. |
+| `data-FlattrID`       | Ihr Benutzername auf Flattr. | `undefined` |
+| `data-FlattrURL`       | URL zu dem Ding | `undefined` |
+| `data-btc`       | Bitcoin Adresse | `undefined` |
+| `data-btcAmount`       | vordefinierte Menge Bitcoins | `undefined` |
+| `data-btcLabel`       | Bitcoin Label | `undefined` |
+| `data-btcMessage`       | Bitcoin Nachricht | `undefined` |
+
 
 ## Backends
 

@@ -1,11 +1,5 @@
-// Google+
-@col-gp: #d34836;
-@col-gp-h: lighten(@col-gp, @lighten);
-@col-gp-cs: darken(@col-gp, @darken);
-@col-gp-bgs: lighten(@col-gp, @lighten_bg);
-
 .shariff {
-    .googleplus {
+    .googleplusplus {
         a {
             background-color: #d34836;
             &:hover {
@@ -28,14 +22,20 @@
             color: @col-gp-cs;
             background-color: @col-gp-bgs;
         }
+		.shariff-tooltip {
+			div {
+				height: 24px;
+				display: block !important;
+			}
+		}
     }
     .theme-white {
-        .googleplus a span {
+        .googleplusplus a span {
             color: @col-gp;
         }
     }
 	.theme-grey {
-		.googleplus a:hover {
+		.googleplusplus a:hover {
 			background-color: @col-gp;
 			div {
 				border-color: @col-gp;

@@ -1,5 +1,5 @@
 .shariff {
-    .info {
+    .print {
         a {
             background-color: #fff;
             &:hover {
@@ -12,13 +12,16 @@
 				}
 			}
         }
-        .fa-info {
-            font-size: 20px;
-			&:before { content: @fa-var-info; }
+        .fa-print {
+            font-size: 18px;
+			&:before { content: @fa-var-print; }
         }
     }
+	ul:not(.orientation-vertical) li.print {
+		float: right;
+	}
     .theme-grey {
-        .info a {
+        .print a {
             &:hover {
                 background-color: #828282;
 				div {

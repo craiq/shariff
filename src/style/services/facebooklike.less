@@ -1,11 +1,5 @@
-// Facebook
-@col-fb: #3b5998;
-@col-fb-h: lighten(@col-fb, @lighten); 	// Hover
-@col-fb-cs: darken(@col-fb, @darken);	// Backend Zahlen
-@col-fb-bgs: #dfe3ee;					// Backend Hintergrund
-
 .shariff {
-    .facebook {
+    .facebooklike {
         a {
             background-color: @col-fb;
             &:hover {
@@ -18,22 +12,31 @@
 				}
 			}
         }
-        .fa-facebook {
+        .fa-facebooklike {
             font-size: 19px;
 			&:before { content: @fa-var-facebook; }
+			@media (max-width: 550px) {
+				&:before { content: @fa-var-thumbs-o-up; }
+			}
         }
         .share_count {
             color: @col-fb-cs;
             background-color: @col-fb-bgs;
         }
-    }
+		.shariff-tooltip {
+			iframe {
+				height: 21px;
+				width: 115px;
+			}
+		}
+   }
     .theme-white {
-        .facebook a span {
+        .facebooklike a span {
             color: @col-fb;
         }
     }
 	.theme-grey {
-		.facebook a:hover {
+		.facebooklike a:hover {
 			background-color: @col-fb;
 			div {
 				border-color: @col-fb;
