@@ -1,8 +1,14 @@
 'use strict';
 
+var url = require('url');
+
 module.exports = function(shariff) {
-    var url = encodeURIComponent(shariff.getURL()),
-	    title = encodeURIComponent(shariff.getTitle());
+    var shareUrl = url.parse('https://sharetodiaspora.github.io/', true);
+    shareUrl.query.url = shariff.getURL();
+    shareUrl.query.title = shariff.getTitle() || shariff.getMeta('DC.title');
+	shareUrl.protocol = 'https';
+    delete shareUrl.search;
+
     return {
         popup: true,
         shareText: {
@@ -15,6 +21,6 @@ module.exports = function(shariff) {
             'de': 'Bei Diaspora teilen',
             'en': 'Share on Diaspora',
         },
-        shareUrl: 'https://sharetodiaspora.github.io/?url=' + url + '&title=' + title + shariff.getReferrerTrack()
+        shareUrl: url.format(shareUrl) + shariff.getReferrerTrack()
     };
 };
