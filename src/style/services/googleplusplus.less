@@ -1,0 +1,45 @@
+.shariff {
+    .googleplusplus {
+        a {
+            background-color: #d34836;
+            &:hover {
+                background-color: @col-gp-h;
+            }
+			div {
+				border: 1px solid @col-gp;
+				&:hover {
+					border-color: @col-gp-h;
+				}
+			}
+        }
+        .fa-google-plus {
+            font-size: 19px;
+            position: relative;
+            top: 1px;
+			&:before { content: @fa-var-google-plus; }
+        }
+        .share_count {
+            color: @col-gp-cs;
+            background-color: @col-gp-bgs;
+        }
+		.shariff-tooltip {
+			div {
+				height: 24px;
+				display: block !important;
+			}
+		}
+    }
+    .theme-white {
+        .googleplusplus a span {
+            color: @col-gp;
+        }
+    }
+	.theme-grey {
+		.googleplusplus a:hover {
+			background-color: @col-gp;
+			div {
+				border-color: @col-gp;
+			}
+		}
+	}
+}
