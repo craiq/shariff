@@ -1,33 +1,44 @@
+// addthis
+@col-at: #f8694d;
+@col-at-h: lighten(@col-at, @lighten); 	// Hover
+@col-at-cs: darken(@col-at, @darken);	// Backend Zahlen
+@col-at-bgs: #dfe3ee;					// Backend Hintergrund
+
 .shariff {
     .addthis {
         a {
-            background-color: #f8694d;
+            background-color: @col-at;
             &:hover {
-                background-color: #f75b44;
+                background-color: @col-at-h;
             }
+			div {
+				border: 1px solid @col-at;
+				&:hover {
+					border-color: @col-at-h;
+				}
+			}
         }
-        .fa-plus {
-            font-size: 14px;
+        .fa-addthis {
+            font-size: 19px;
+			&:before { content: @fa-var-plus; }
         }
         .share_count {
-            color: #f8694d;
-            background-color: #f1b8b0;
+            color: @col-at-cs;
+            background-color: @col-at-bgs;
         }
     }
-    .theme-white {
-        .addthis a {
-            color: #f8694d;
+    .theme-white, .theme-circle-white {
+        .addthis a span {
+            color: @col-at !important;
         }
     }
-}
+	.theme-grey, .theme-circle-grey {
+		.addthis a:hover {
+			background-color: @col-at;
+			div {
+				border-color: @col-at;
+			}
+		}
+	}
 
-@media only screen and (min-width: 600px) {
-    .shariff {
-        .addthis .fa-plus {
-            font-size: 14px;
-            position: relative;
-            top: 1px;
-        }
-    }
 }
-
