@@ -1,5 +1,7 @@
 'use strict';
 
+/*globals shariff_l10n */
+
 var $ = require('jquery');
 var url = require('url');
 
@@ -32,10 +34,26 @@ var Shariff = function(element, options) {
     // filter available services to those that are enabled and initialize them
     this.services = $.map(this.options.services, function(serviceName) {
         var service;
-        availableServices.forEach(function(availableService) {
+		$.each(availableServices, function(key, availableService) {
             availableService = availableService(self);
             if (availableService.name === serviceName) {
                 service = availableService;
+				if (typeof shariff_l10n !== 'undefined') {
+					if (typeof shariff_l10n.share !== 'undefined' && service.shareText.en === 'share') {
+						$.extend(service.shareText, shariff_l10n.share.shareText);
+					}
+					if (typeof shariff_l10n[serviceName] !== 'undefined') {
+						if (typeof shariff_l10n[serviceName].shareText !== 'undefined' && typeof service.shareText !== 'string') {
+							$.extend(service.shareText, shariff_l10n[serviceName].shareText);
+						}
+						if (typeof shariff_l10n[serviceName].title !== 'undefined' && typeof service.title !== 'string') {
+							$.extend(service.title, shariff_l10n[serviceName].title);
+						}
+						if (typeof shariff_l10n[serviceName].desc !== 'undefined' && typeof service.desc !== 'undefined' && typeof shariff_l10n[serviceName].desc !== 'string') {
+							$.extend(service.desc, shariff_l10n[serviceName].desc);
+						}
+					}
+				}
                 return null;
             }
         });
@@ -145,6 +163,10 @@ Shariff.prototype = {
         return this.options.infoUrl;
     },
 
+	getLang: function() {
+		return this.options.lang;
+	},
+    
     getURL: function() {
         return this.getOption('url');
     },
@@ -194,7 +216,7 @@ Shariff.prototype = {
         var $buttonList = $('<ul>').addClass(themeClass).addClass(orientationClass).addClass(serviceCountClass);
 
         // add html for service-links
-        this.services.forEach(function(service) {
+		$.each(this.services, function (key, service) {
             var $li = $('<li class="shariff-button">').addClass(service.name);
             var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
 
@@ -247,7 +269,7 @@ global.Shariff = Shariff;
 
 // initialize .shariff elements
 $('.shariff').each(function() {
-    if (!this.hasOwnProperty('shariff')) {
+    if (typeof this.shariff === 'undefined') {
         this.shariff = new Shariff(this);
     }
 });
