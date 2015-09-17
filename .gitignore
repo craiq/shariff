@@ -1,9 +1,6 @@
-demo/*.js
-demo/*.css
-demo/build
-demo/css
-demo/fonts
+demo
 *.map
+*.bak
 #build/*
 
 bower_components
