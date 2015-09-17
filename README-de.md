@@ -23,6 +23,7 @@ Verfügbare Module
     * E-Mail
     * Print
     * Info
+	* mehr
 
 Der Code der offiziellen Buttons von Facebook, Google+ und Twitter überträgt von jedem Besucher kennzeichnende Daten an die Social-Media-Netzwerke. Shariff erzeugtze hingegen Share-Buttons, die mit einem Klick teilen, die Anzahl der Likes, Tweets und Plus-Ones für die aktuelle Seite anzeigen und trotzdem keine unnötigen Daten übertragen.
 
@@ -114,8 +115,8 @@ Für den Aufruf von `grunt demo` muss [Grunt CLI](http://gruntjs.com/getting-sta
 | `data-media-url` | Zu teilendes Bild (pinterest) | `null` |
 | `data-orientation` | Anordnung der Buttons. Verfügbar: `horizontal`, `vertical` | `horizontal`  |
 | `data-referrer-track` | Wenn angegeben, wird dieser String an die geteilte URL angehängt. Mit `null` deaktivieren. | `null` |
-| `data-services`   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` <br> Verfügbare Dienste: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, Drucken |
-| `data-theme`       | Farbschema auswählen. Verfügbar: `color`, `grey` und `white`. | `color` |
+| `data-services`   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` <br> Verfügbare Dienste: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mehr`, `mail`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, Drucken |
+| `data-theme`       | Farbschema auswählen. Verfügbar: `color`, `grey`, `white`, `circle-color`, `circle-white` und `circle-grey`. | `color` |
 | `data-title`       | Titel der zu teilenden Seite. | Entweder `DC.title`/`DC.creator` oder `<title>` |
 | `data-url`         | URL, die geteilt werden soll. | Wenn `data-url` nicht gesetzt ist, wird `link[rel="canonical"]`, `meta[property="og:url"]` oder `location.href` verwendet. |
 | `data-FlattrID`       | Ihr Benutzername auf Flattr. | `undefined` |

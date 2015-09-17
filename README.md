@@ -23,6 +23,7 @@ Available Modules
     * E-Mail
     * Print
     * Info
+	* more
 
 Facebook, Google+ and Twitter supply official sharing code snippets which quietly siphon personal data from all page visitors. Shariff enables visitors to see how popular your page is on Facebook and share your content with others without needless data leaks.
 
@@ -114,8 +115,8 @@ Make sure you have installed the [Grunt CLI](http://gruntjs.com/getting-started#
 | `data-media-url` | Media url to be shared (pinterest) | `null` |
 | `data-orientation` | `vertical` will stack the buttons vertically. | `horizontal`  |
 | `data-referrer-track` | A string that will be appended to the share url. Can be disabled using `null`. | `null` |
-| `data-services`   | An entity-encoded JSON string containing an array of service names to be enabled. Example: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` Available service names: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, print |
-| `data-theme`       | We include 3 color schemes, `color`, `grey` and `white`. | `color` |
+| `data-services`   | An entity-encoded JSON string containing an array of service names to be enabled. Example: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` Available service names: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `more`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, print |
+| `data-theme`       | We include 6 schemes, `color`, `grey`, `white`, `circle-color`, `circle-white` and `circle-grey`. | `color` |
 | `data-title`       | Title to be used as share text in Twitter/Whatsapp | page's `DC.title`/`DC.creator` or `<title>` |
 | `data-twitter-via` | Screen name of the user to attribute the Tweet to | `null` |
 | `data-url`         | The canonical URL of the page to check. | page's canonical URL or `og:url` or current URL |
