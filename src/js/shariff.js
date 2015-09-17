@@ -8,6 +8,20 @@ if(typeof String.prototype.trim !== 'function') {
   };
 }
 
+if (!Object.keys) {
+  Object.keys = function(obj) {
+    var keys = [];
+
+    for (var i in obj) {
+      if (obj.hasOwnProperty(i)) {
+        keys.push(i);
+      }
+    }
+
+    return keys;
+  };
+}
+
 var $ = require('jquery');
 var url = require('url');
 
