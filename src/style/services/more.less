@@ -1,4 +1,16 @@
 .shariff {
+	.loop-col(@services);
+	.loop-col(@n, @i: 1) when (@i <= @n) {
+		@j: (@i+1);
+		.more-@{i} li {
+			width: (100% / @i);
+			&:nth-child(n+@{j}) {
+				display: none;
+			}
+		}
+		.loop-col(@n, (@i + 1));
+	}
+
     .more {
         a {
             background-color: #fff;
