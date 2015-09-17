@@ -231,7 +231,7 @@ Shariff.prototype = {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
             }
-            $(self.element).find('.' + key + ' a span:first').after($('<span class="share_count">').text(value));
+            $(self.element).find('.' + key + ' a span:first').after($('<span>').addClass('share_count').text(value));
         });
     },
 
@@ -252,8 +252,8 @@ Shariff.prototype = {
 
         // add html for service-links
 		$.each(this.services, function (key, service) {
-            var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
-            var $shareText = $('<span class="share_text">').text(self.getLocalized(service, 'shareText'));
+            var $li = $('<li>').addClass('shariff-button').append('<div>').addClass(service.name);
+            var $shareText = $('<span>').addClass('share_text').text(self.getLocalized(service, 'shareText'));
 
             var $shareLink = $('<a><div>')
 				.data('key', key);
@@ -267,7 +267,7 @@ Shariff.prototype = {
 			}
 
             if (typeof service.faName !== 'undefined') {
-                $shareLink.children('div').prepend($('<span class="fa">').addClass(service.faName));
+                $shareLink.children('div').prepend($('<span>').addClass('fa').addClass(service.faName));
             }
 
             if (service.popup) {
@@ -312,18 +312,18 @@ Shariff.prototype = {
 				w = 180,
 				service = self.services[$(this).data('key')];
 			
-            var $shariffTooltip =$('<div class="shariff-tooltip"></div>');
+            var $shariffTooltip =$('<div>').addClass('shariff-tooltip');
 			
             if (service.width !== 'undefined'){
                 $(this).parent().width(service.width);
             }
 			if (service.desc !== 'undefined'){
-                $shariffTooltip.append('<p>' + self.getLocalized(service, 'desc') + '</p>');
+                $shariffTooltip.append($('<p>').text(self.getLocalized(service, 'desc')));
 			}
 
 			$(this).closest('div').css('position', '');
 			if(url !== '#') {
-				$shariffTooltip.append('<iframe src="' + url + '"></iframe></div>');
+				$shariffTooltip.append($('<iframe>').attr('src', url));
 			} else if(service.snippet !== 'undefined'){
 				$shariffTooltip.append(service.snippet);
 			}

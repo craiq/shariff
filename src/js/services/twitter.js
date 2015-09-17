@@ -34,6 +34,7 @@ module.exports = function(shariff) {
     if (shariff.options.twitterVia !== null) {
         shareUrl.query.via = shariff.options.twitterVia;
     }
+	shareUrl.protocol = 'https';
     delete shareUrl.search;
 
     return {

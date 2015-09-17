@@ -17,6 +17,7 @@ module.exports = function(shariff) {
     shareUrl.query.url = shariff.getURL();
     shareUrl.query.media = img;
     shareUrl.query.description = title;
+	shareUrl.protocol = 'https';
     delete shareUrl.search;
 
     return {
