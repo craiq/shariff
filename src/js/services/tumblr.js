@@ -1,16 +1,20 @@
 'use strict';
 
+var url = require('url');
+
 module.exports = function(shariff) {
-    var url = encodeURIComponent(shariff.getURL());
-
-    var title = shariff.getMeta('DC.title');
+    var title = shariff.getTitle() || shariff.getMeta('DC.title');
     var creator = shariff.getMeta('DC.creator');
-
-    if (title.length > 0 && creator.length > 0) {
+    if (creator.length > 0) {
         title += ' - ' + creator;
-    } else {
-        title = shariff.getTitle();
     }
+	
+	var shareUrl = url.parse('https://www.tumblr.com/share/link', true);
+    shareUrl.query.url = shariff.getURL();
+    shareUrl.query.title = title;
+	shareUrl.protocol = 'https';
+    delete shareUrl.search;
+
 
     return {
         popup: true,
@@ -24,7 +28,7 @@ module.exports = function(shariff) {
             'de': 'Bei Tumblr teilen',
             'en': 'Share on Tumblr',
         },
-        shareUrl: 'https://www.tumblr.com/share/link?url=' + url + shariff.getReferrerTrack()
+        shareUrl: url.format(shareUrl) + shariff.getReferrerTrack()
     };
 };
 
