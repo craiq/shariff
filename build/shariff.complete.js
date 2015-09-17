@@ -37,9 +37,9 @@ return De(this,function(t,n,r){var i;return ie.isWindow(t)?t.document.documentEl
 "use strict";module.exports=function(e){var n=encodeURIComponent(e.options.btc),o=[];return"undefined"!=typeof e.options.btclabel&&o.push("label="+encodeURIComponent(e.options.btclabel)),"undefined"!=typeof e.options.btcamount&&o.push("amount="+encodeURIComponent(e.options.btcamount)),"undefined"!=typeof e.options.btcmessage&&o.push("message="+encodeURIComponent(e.options.btcmessage)),o.length>0&&(n+="?"+o.join("&")),{blank:!0,popup:!1,shareText:{de:"spenden",en:"donate"},name:"bitcoin",faName:"fa-btc",title:{de:"Bitcoins spenden",en:"donate Bitcoins"},shareUrl:"bitcoin:"+n}};
 
 },{}],9:[function(require,module,exports){
-"use strict";module.exports=function(e){var t=encodeURIComponent(e.getURL()),r=encodeURIComponent(e.getTitle());return{popup:!0,shareText:{de:"teilen",en:"share"},name:"diaspora",faName:"fa-times-circle",title:{de:"Bei Diaspora teilen",en:"Share on Diaspora"},shareUrl:"https://sharetodiaspora.github.io/?url="+t+"&title="+r+e.getReferrerTrack()}};
+"use strict";var url=require("url");module.exports=function(e){var r=url.parse("https://sharetodiaspora.github.io/",!0);return r.query.url=e.getURL(),r.query.title=e.getTitle()||e.getMeta("DC.title"),r.protocol="https",delete r.search,{popup:!0,shareText:{de:"teilen",en:"share"},name:"diaspora",faName:"fa-times-circle",title:{de:"Bei Diaspora teilen",en:"Share on Diaspora"},shareUrl:url.format(r)+e.getReferrerTrack()}};
 
-},{}],10:[function(require,module,exports){
+},{"url":5}],10:[function(require,module,exports){
 "use strict";module.exports=function(e){var o=encodeURIComponent(e.getURL());return{popup:!0,shareText:{de:"teilen",en:"share"},name:"facebook",faName:"fa-facebook",title:{de:"Bei Facebook teilen",en:"Share on Facebook"},shareUrl:"https://www.facebook.com/sharer/sharer.php?u="+o+e.getReferrerTrack()}};
 
 },{}],11:[function(require,module,exports){
@@ -67,7 +67,7 @@ return De(this,function(t,n,r){var i;return ie.isWindow(t)?t.document.documentEl
 "use strict";module.exports=function(e){return{more:!0,shareText:{de:"mehr",en:"more"},lessText:{de:"weniger",en:"less"},name:"more",faName:"fa-plus",title:{de:"mehr Optionen zum Teilen anzeigen",en:"show more options to share"}}};
 
 },{}],19:[function(require,module,exports){
-"use strict";var url=require("url");module.exports=function(e){var t=e.getMeta("DC.title")||e.getTitle(),r=e.getMeta("DC.creator");r.length>0&&(t+=" - "+r);var i=e.getOption("mediaUrl");i&&i.length<=0&&(i=e.getMeta("og:image"));var n=url.parse("https://www.pinterest.com/pin/create/link/",!0);return n.query.url=e.getURL(),n.query.media=i,n.query.description=t,n.protocol="https",delete n.search,{popup:!0,shareText:{en:"pin it"},name:"pinterest",faName:"fa-pinterest-p",title:{de:"Bei Pinterest pinnen",en:"Pin it on Pinterest"},shareUrl:url.format(n)+e.getReferrerTrack()}};
+"use strict";var url=require("url");module.exports=function(e){var t=e.getTitle()||e.getMeta("DC.title"),r=e.getMeta("DC.creator");r.length>0&&(t+=" - "+r);var i=e.getOption("mediaUrl");i&&i.length<=0&&(i=e.getMeta("og:image"));var n=url.parse("https://www.pinterest.com/pin/create/link/",!0);return n.query.url=e.getURL(),n.query.media=i,n.query.description=t,n.protocol="https",delete n.search,{popup:!0,shareText:{en:"pin it"},name:"pinterest",faName:"fa-pinterest-p",title:{de:"Bei Pinterest pinnen",en:"Pin it on Pinterest"},shareUrl:url.format(n)+e.getReferrerTrack()}};
 
 },{"url":5}],20:[function(require,module,exports){
 "use strict";module.exports=function(e){return{pageprint:!0,shareText:{de:"drucken",en:"print"},name:"print",faName:"fa-print",title:{de:"Diese Seite drucken",en:"print this page"}}};
