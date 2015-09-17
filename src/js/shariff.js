@@ -107,7 +107,7 @@ Shariff.prototype = {
             return this.getMeta('DC.title') || this.getTitle();
         },
 
-        mailBody: function() { return '<' + this.getURL() + '>'; },
+        mailBody: function() { return this.getURL(); },
 
         // Media (e.g. image) URL to be shared
         mediaUrl: null,
@@ -120,7 +120,7 @@ Shariff.prototype = {
         referrerTrack: null,
 
         // services to be enabled in the following order
-        services   : ['twitter', 'facebook', 'googleplus', 'info'],
+        services   : [ 'facebook', 'facebooklike','twitter', 'googleplus', 'print'],
 
         title: function() {
             return $('head title').text();
