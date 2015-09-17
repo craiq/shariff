@@ -30,17 +30,22 @@
 			}
 		}
    }
-    .theme-white {
+    .theme-white, .theme-circle-white {
         .facebooklike a span {
-            color: @col-fb;
+            color: @col-fb !important;
         }
     }
-	.theme-grey {
+	.theme-grey, .theme-circle-grey {
 		.facebooklike a:hover {
 			background-color: @col-fb;
 			div {
 				border-color: @col-fb;
 			}
+		}
+	}
+	.theme-circle-color, .theme-circle-white, .theme-circle-grey {
+        .fa-facebooklike:before {
+			content: @fa-var-thumbs-o-up;
 		}
 	}
 }

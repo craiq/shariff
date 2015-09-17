@@ -227,7 +227,7 @@ Shariff.prototype = {
         if ($(self.element).find('.facebook').length === 1 && $(self.element).find('.facebooklike').length === 1) {
             data.facebook = data.facebook - data.facebooklike;
         }
-        $(self.element).addClass('backend');
+        $(self.element).find('ul').addClass('backend');
         $.each(data, function(key, value) {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
@@ -401,6 +401,18 @@ Shariff.prototype = {
 				$(this).data('more', 'true');
 			}
         });
+		
+		$buttonList
+			.on('mouseenter', function() {
+				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
+					$(this).find('span.share_count').css('margin-top', '-20px').siblings('.fa').css('margin-top', '-30px');
+				}
+		})
+			.on('mouseleave', function() {
+				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
+					$(this).find('span.share_count').css('margin-top', '').siblings('.fa').css('margin-top', '');
+				}
+		});
 
         $socialshareElement.append($buttonList);
     }

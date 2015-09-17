@@ -34,7 +34,7 @@
 		width: 100%;
 		position: relative;
 	}
-	&.backend li{
+	.backend li{
 		min-width: @min-width-backend;
 		max-width: @max-width-backend;
 		.share-count {
@@ -123,6 +123,48 @@
 			}
 		}
     }
+	.theme-circle-color, .theme-circle-grey, .theme-circle-white {
+		li {
+			min-width: auto;
+			width: auto !important;
+		}
+		a {
+			width: 40px;
+			height: 40px;
+			max-width: 40px;
+			display: table-cell;
+			vertical-align: middle;
+			border-radius: 50%;
+			div {
+				text-align: center;
+				border: none !important;
+				span {
+					transition: margin 0.2s ease;
+					&.share_count {
+						float: none;
+						background-color: transparent !important;
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+	
+	.theme-circle-white {
+		li a {
+			background-color: #fff;
+			border: 1px solid #444;
+			&:hover {
+				background-color: #efefef;
+			}
+		}
+	}
+	.theme-circle-grey li a {
+		background-color: #b0b0b0;
+		span {
+			color: #fff;
+		}
+	}
 
 	.shariff-tooltip {
 		position: absolute;
