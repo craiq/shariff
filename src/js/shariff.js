@@ -2,6 +2,12 @@
 
 /*globals shariff_l10n */
 
+if(typeof String.prototype.trim !== 'function') {
+  String.prototype.trim = function() {
+    return this.replace(/^\s+|\s+$/g, ''); 
+  };
+}
+
 var $ = require('jquery');
 var url = require('url');
 
