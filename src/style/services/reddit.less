@@ -1,0 +1,42 @@
+@col-re: #FF4500;
+@col-re-h: lighten(@col-re, @lighten);
+@col-re-cs: darken(@col-re, @darken);
+@col-re-bgs: lighten(@col-re, @lighten_bg);
+
+.shariff {
+    .reddit {
+        a {
+            background-color: @col-re;
+            &:hover {
+                background-color: @col-re-h;
+            }
+			div {
+				border: 1px solid @col-re;
+				&:hover {
+					border-color: @col-re-h;
+				}
+			}
+        }
+        .fa-reddit {
+            font-size: 19px;
+			&:before { content: @fa-var-reddit; }
+        }
+        .share_count {
+            color: @col-re-cs;
+            background-color: @col-re-bgs;
+        }
+    }
+    .theme-white {
+        .reddit a span {
+            color: @col-re;
+        }
+    }
+	.theme-grey {
+		.reddit a:hover {
+			background-color: @col-re;
+			div {
+				border-color: @col-re;
+			}
+		}
+	}
+}

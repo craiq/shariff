@@ -23,14 +23,20 @@ var Shariff = function(element, options) {
         require('./services/facebooklike'),
         require('./services/googleplus'),
         require('./services/googleplusplus'),
-        require('./services/print'),
-        require('./services/info'),
         require('./services/linkedin'),
+        require('./services/print'),
+        require('./services/xing'),
+        require('./services/flattr'),
+        require('./services/info'),
         require('./services/mail'),
         require('./services/pinterest'),
+        require('./services/reddit'),
+        require('./services/tumblr'),
         require('./services/twitter'),
         require('./services/whatsapp'),
-        require('./services/xing'),
+        require('./services/diaspora'),
+        require('./services/stumbleupon'),
+        require('./services/bitcoin'),
     ];
 
     // filter available services to those that are enabled and initialize them

@@ -1,0 +1,42 @@
+@col-st: #eb4924;
+@col-st-h: lighten(@col-st, @lighten);
+@col-st-cs: darken(@col-st, @darken);
+@col-st-bgs: lighten(@col-st, @lighten_bg);
+
+.shariff {
+    .stumbleupon {
+        a {
+            background-color: @col-st;
+            &:hover {
+                background-color: @col-st-h;
+            }
+			div {
+				border: 1px solid @col-st;
+				&:hover {
+					border-color: @col-st-h;
+				}
+			}
+        }
+        .fa-stumbleupon {
+            font-size: 19px;
+			&:before { content: @fa-var-stumbleupon; }
+        }
+        .share_count {
+            color: @col-st-cs;
+            background-color: @col-st-bgs;
+        }
+    }
+    .theme-white {
+        .stumbleupon a span {
+            color: @col-st;
+        }
+    }
+	.theme-grey {
+		.stumbleupon a:hover {
+			background-color: @col-st;
+			div {
+				border-color: @col-st;
+			}
+		}
+	}
+}
