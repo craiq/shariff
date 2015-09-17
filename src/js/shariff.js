@@ -231,7 +231,7 @@ Shariff.prototype = {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
             }
-            $(self.element).find('.' + key + ' a span:first').after('<span class="share_count">' + value);
+            $(self.element).find('.' + key + ' a span:first').after($('<span class="share_count">').text(value));
         });
     },
 
@@ -253,7 +253,7 @@ Shariff.prototype = {
         // add html for service-links
 		$.each(this.services, function (key, service) {
             var $li = $('<li class="shariff-button">').append('<div>').addClass(service.name);
-            var $shareText = '<span class="share_text">' + self.getLocalized(service, 'shareText');
+            var $shareText = $('<span class="share_text">').text(self.getLocalized(service, 'shareText'));
 
             var $shareLink = $('<a><div>')
 				.data('key', key);
@@ -267,7 +267,7 @@ Shariff.prototype = {
 			}
 
             if (typeof service.faName !== 'undefined') {
-                $shareLink.children('div').prepend('<span class="fa ' +  service.faName + '">');
+                $shareLink.children('div').prepend($('<span class="fa">').addClass(service.faName));
             }
 
             if (service.popup) {
