@@ -23,6 +23,7 @@ var Shariff = function(element, options) {
         require('./services/facebooklike'),
         require('./services/googleplus'),
         require('./services/googleplusplus'),
+        require('./services/print'),
         require('./services/info'),
         require('./services/linkedin'),
         require('./services/mail'),
@@ -247,6 +248,8 @@ Shariff.prototype = {
                 $shareLink.attr('rel', 'popup');
             } else if(service.tooltip){
                 $shareLink.attr('rel', 'tooltip');
+            } else if(service.pageprint){
+                $shareLink.attr('rel', 'pageprint');
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }

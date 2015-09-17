@@ -1,0 +1,38 @@
+.shariff {
+    .print {
+        a {
+            background-color: #fff;
+            &:hover {
+                background-color: #efefef;
+            }
+			div {
+				border: 1px solid #ccc;
+				span {
+					color: #666;
+				}
+			}
+        }
+        .fa-print {
+            font-size: 18px;
+			&:before { content: @fa-var-print; }
+        }
+    }
+	ul:not(.orientation-vertical) li.print {
+		float: right;
+	}
+    .theme-grey {
+        .print a {
+            &:hover {
+                background-color: #828282;
+				div {
+					border-color: #828282;
+				}
+            }
+			span {
+				color: #fff;
+			}
+        }
+    }
+
+}
+
