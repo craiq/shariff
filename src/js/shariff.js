@@ -57,6 +57,7 @@ var Shariff = function(element, options) {
         require('./services/diaspora'),
         require('./services/stumbleupon'),
         require('./services/bitcoin'),
+        require('./services/more'),
     ];
 
     // filter available services to those that are enabled and initialize them
@@ -276,6 +277,10 @@ Shariff.prototype = {
                 $shareLink.attr('rel', 'tooltip');
             } else if(service.pageprint){
                 $shareLink.attr('rel', 'pageprint');
+            } else if(service.more){
+                $shareLink.attr('rel', 'more')
+					.data('more', 'true')
+					.data('position', $buttonList.find('li').length + 1);
             } else if (service.blank) {
                 $shareLink.attr('target', '_blank');
             }
@@ -288,6 +293,10 @@ Shariff.prototype = {
             $li.children('div').append($shareLink);
 
             $buttonList.append($li);
+			
+			if (service.more) {
+				$buttonList.addClass('more-' + $buttonList.find('li').length);
+			}
         });
 
         // event delegation
@@ -364,6 +373,26 @@ Shariff.prototype = {
 		$buttonList.on('click', '[rel="pageprint"]', function(e) {
             e.preventDefault();
 			window.print();
+        });
+
+		$buttonList.on('click', '[rel="more"]', function(e) {
+            e.preventDefault();
+			var more = $(this).data('more') === 'true' ? true : false,
+				posi = $(this).data('position'),
+				service = self.services[$(this).data('key')];
+			if (more) {
+				$(this).find('.fa-plus').removeClass('fa-plus').addClass('fa-minus');
+				$(this).find('.share_text').text(self.getLocalized(service, 'lessText'));
+				$(this).closest('ul').removeClass('more-' + posi);
+				$(this).closest('li').appendTo($(this).closest('ul'));
+				$(this).data('more', 'false');
+			} else {
+				$(this).find('.fa-minus').removeClass('fa-minus').addClass('fa-plus');
+				$(this).find('.share_text').text(self.getLocalized(service, 'shareText'));
+				$(this).closest('ul').addClass('more-' + posi);
+				$(this).closest('li').insertAfter($(this).closest('ul').find('li:nth-child(' + (posi - 1) + ')'));
+				$(this).data('more', 'true');
+			}
         });
 
         $socialshareElement.append($buttonList);
