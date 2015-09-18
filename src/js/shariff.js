@@ -405,7 +405,7 @@ Shariff.prototype = {
 		$buttonList
 			.on('mouseenter', function() {
 				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-					$(this).find('span.share_count').css('margin-top', '-20px').siblings('.fa').css('margin-top', '-30px');
+					$(this).find('span.share_count').css('margin-top', '-20px').siblings('.fa').css('margin-top', '-35px');
 				}
 		})
 			.on('mouseleave', function() {
