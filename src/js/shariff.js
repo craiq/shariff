@@ -253,13 +253,12 @@ Shariff.prototype = {
 
         // add html for service-links
 		$.each(this.services, function (key, service) {
-            var $li = $('<li>').addClass('shariff-button').append('<div>').addClass(service.name);
+            var $li = $('<li>').addClass('shariff-button').addClass(service.name);
             var $shareText = $('<span>').addClass('share_text').text(self.getLocalized(service, 'shareText'));
 
-            var $shareLink = $('<a><div>')
-				.data('key', key);
+            var $shareLink = $('<a>').data('key', key);
 			  
-			$shareLink.children('div').append($shareText);
+			$shareLink.append($shareText);
 			
 			if (typeof service.shareUrl !== 'undefined') {
 				$shareLink.attr('href', service.shareUrl);
@@ -268,7 +267,7 @@ Shariff.prototype = {
 			}
 
             if (typeof service.faName !== 'undefined') {
-                $shareLink.children('div').prepend($('<span>').addClass('fa').addClass(service.faName));
+                $shareLink.prepend($('<span>').addClass('fa').addClass(service.faName));
             }
 
             if (service.popup) {
@@ -290,7 +289,7 @@ Shariff.prototype = {
             $shareLink.attr('role', 'button');
             $shareLink.attr('aria-label', self.getLocalized(service, 'title'));
 
-            $li.children('div').append($shareLink);
+            $li.append($shareLink);
 
             $buttonList.append($li);
 			
@@ -330,7 +329,7 @@ Shariff.prototype = {
                 $shariffTooltip.append($('<p>').text(self.getLocalized(service, 'desc')));
 			}
 
-			$(this).closest('div').css('position', '');
+			$(this).closest('li').css('position', '');
 			if(url !== '#') {
 				$shariffTooltip.append($('<iframe>').attr('src', url));
 			} else if(service.snippet !== 'undefined'){
@@ -338,7 +337,7 @@ Shariff.prototype = {
 			}
 			
 			if($(window).width() - $(this).offset().left < w) {
-				$(this).closest('div').css('position', 'static');
+				$(this).closest('li').css('position', 'static');
 				$shariffTooltip
 					.css('right', '4px')
 					.css('bottom', $(this).closest('ul').height() - $(this).height() - $(this).position().top + 36);

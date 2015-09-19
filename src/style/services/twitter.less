@@ -8,25 +8,23 @@
     .twitter {
         a {
             background-color: @col-tw;
+			border: 1px solid @col-tw;
             &:hover {
                 background-color: @col-tw-h;
-            }
-			div {
-				border: 1px solid @col-tw;
-				&:hover {
-					border-color: @col-tw-h;
-				}
+				border-color: @col-tw-h;
 			}
         }
         .fa-twitter {
             font-size: 24px;
 			&:before { content: @fa-var-twitter; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .twitter .share_count {
             color: @col-tw-cs;
             background-color: @col-tw-bgs;
         }
-    }
+	}
     .theme-white, .theme-circle-white {
         .twitter a span {
             color: @col-tw !important;
@@ -35,9 +33,7 @@
 	.theme-grey, .theme-circle-grey {
 		.twitter a:hover {
 			background-color: @col-tw;
-			div {
-				border-color: @col-tw;
-			}
+			border-color: @col-tw;
 		}
 	}
 }

@@ -7,25 +7,23 @@
     .reddit {
         a {
             background-color: @col-re;
+			border: 1px solid @col-re;
             &:hover {
                 background-color: @col-re-h;
-            }
-			div {
-				border: 1px solid @col-re;
-				&:hover {
-					border-color: @col-re-h;
-				}
+				border-color: @col-re-h;
 			}
         }
         .fa-reddit {
             font-size: 19px;
 			&:before { content: @fa-var-reddit; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .reddit .share_count {
             color: @col-re-cs;
             background-color: @col-re-bgs;
         }
-    }
+	}
     .theme-white, .theme-circle-white {
         .reddit a span {
             color: @col-re !important;
@@ -34,9 +32,7 @@
 	.theme-grey, .theme-circle-grey {
 		.reddit a:hover {
 			background-color: @col-re;
-			div {
-				border-color: @col-re;
-			}
+			border-color: @col-re;
 		}
 	}
 }

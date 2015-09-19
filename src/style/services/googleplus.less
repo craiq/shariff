@@ -8,14 +8,10 @@
     .googleplus {
         a {
             background-color: #d34836;
+			border: 1px solid @col-gp;
             &:hover {
                 background-color: @col-gp-h;
-            }
-			div {
-				border: 1px solid @col-gp;
-				&:hover {
-					border-color: @col-gp-h;
-				}
+				border-color: @col-gp-h;
 			}
         }
         .fa-google-plus {
@@ -24,11 +20,13 @@
             top: 1px;
 			&:before { content: @fa-var-google-plus; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .googleplus .share_count {
             color: @col-gp-cs;
             background-color: @col-gp-bgs;
         }
-    }
+	}
     .theme-white, .theme-circle-white {
         .googleplus a span {
             color: @col-gp !important;
@@ -37,9 +35,7 @@
 	.theme-grey, .theme-circle-grey {
 		.googleplus a:hover {
 			background-color: @col-gp;
-			div {
-				border-color: @col-gp;
-			}
+			border-color: @col-gp;
 		}
 	}
 }

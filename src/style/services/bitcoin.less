@@ -8,26 +8,24 @@
     .bitcoin {
         a {
             background-color: @col-bt;
+			border: 1px solid @col-bt;
             &:hover {
                 background-color: @col-bt-h;
-            }
-			div {
-				border: 1px solid @col-bt;
-				&:hover {
-					border-color: @col-bt-h;
-				}
+				border-color: @col-bt-h;
 			}
         }
         .fa-btc {
             font-size: 19px;
 			&:before { content: @fa-var-btc; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .bitcoin .share_count {
             color: @col-bt-cs;
             background-color: @col-bt-bgs;
         }
-    }
-    .theme-white, .theme-circle-white {
+	}
+   .theme-white, .theme-circle-white {
         .bitcoin a span {
             color: @col-bt !important;
         }
@@ -35,9 +33,7 @@
 	.theme-grey, .theme-circle-grey {
 		.bitcoin a:hover {
 			background-color: @col-bt;
-			div {
-				border-color: @col-bt;
-			}
+			border-color: @col-bt;
 		}
 	}
 }

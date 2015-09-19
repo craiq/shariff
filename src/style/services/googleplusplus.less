@@ -18,10 +18,6 @@
             top: 1px;
 			&:before { content: @fa-var-google-plus; }
         }
-        .share_count {
-            color: @col-gp-cs;
-            background-color: @col-gp-bgs;
-        }
 		.shariff-tooltip {
 			div {
 				height: 24px;
@@ -29,6 +25,12 @@
 			}
 		}
     }
+	.theme-color, .theme-white {
+        .googleplusplus .share_count {
+            color: @col-gp-cs;
+            background-color: @col-gp-bgs;
+        }
+	}
     .theme-white, .theme-circle-white {
         .googleplusplus a span {
             color: @col-gp;

@@ -6,14 +6,10 @@
     .mail {
         a {
             background-color: @col-ma;
+			border: 1px solid @col-ma;
             &:hover {
                 background-color: @col-ma-h;
-            }
-			div {
-				border: 1px solid @col-ma;
-				&:hover {
-					border-color: @col-ma-h;
-				}
+				border-color: @col-ma-h;
 			}
         }
         .fa-envelope {
@@ -29,9 +25,7 @@
 	.theme-grey, .theme-circle-grey {
 		.mail a:hover {
 			background-color: @col-ma;
-			div {
-				border-color: @col-ma;
-			}
+			border-color: @col-ma;
 		}
 	}
 }

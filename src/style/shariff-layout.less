@@ -50,38 +50,34 @@
 		box-sizing: border-box;
 		min-width: @min-width;
 		max-width: @max-width;
-		& > div {
-			position: relative;
-		}
+		position: relative;
 		a {
 			display: block;
+			height: 28px;
+			overflow: hidden;
+			box-sizing: content-box;
 			&:hover {
 				text-decoration: none !important;
 			}
-			div {
-				height: 28px;
-				overflow: hidden;
-				box-sizing: content-box;
-				span {
-					display: inline-block;
-					line-height: 28px;
-					color: #FFF;
-					vertical-align: top;
-				}
-				.fa {
-					width: 30px;
-					text-align: center;
-				}
-				.share_count {
-					float: right;
-					min-width: 30px;
-					text-align: center;
-					padding: 0 2px;
-				}
-				.share_text {
-					min-width: 42px;
-					padding-right: 4px;
-				}
+			span {
+				display: inline-block;
+				line-height: 28px;
+				color: #FFF;
+				vertical-align: top;
+			}
+			.fa {
+				width: 30px;
+				text-align: center;
+			}
+			.share_count {
+				float: right;
+				min-width: 30px;
+				text-align: center;
+				padding: 0 2px;
+			}
+			.share_text {
+				min-width: 42px;
+				padding-right: 4px;
 			}
 		}
 	}
@@ -97,30 +93,26 @@
 	}
 	.theme-white li a {
 		background-color: #fff;
+		border: 1px solid #ddd;
 		&:hover {
 			background-color: #efefef;
 		}
-		div {
+		&:hover {
 			border: 1px solid #ddd;
-			&:hover {
-				border: 1px solid #ddd;
-			}
-			span {
-				color: #666;
-			}
-			.share-count {
-				background-color: #fff;
-			}
+		}
+		span {
+			color: #666;
+		}
+		.share-count {
+			background-color: #fff;
 		}
 	}
 	.theme-grey li a {
 		background-color: #b0b0b0;
-		div {
-			border: 1px solid #b0b0b0;
-			.share_count {
-				background-color: #ccc;
-				color: #333;
-			}
+		border: 1px solid #b0b0b0;
+		.share_count {
+			background-color: #ccc;
+			color: #333;
 		}
     }
 	.theme-circle-color, .theme-circle-grey, .theme-circle-white {
@@ -132,21 +124,14 @@
 			width: 40px;
 			height: 40px;
 			max-width: 40px;
-			display: table-cell;
-			vertical-align: middle;
 			border-radius: 50%;
-			div {
-				text-align: center;
-				border: none !important;
-				height: 38px;
-				span {
-					transition: margin 0.2s ease;
-					line-height: 38px;
-					&.share_count {
-						float: none;
-						background-color: transparent !important;
-						color: #fff;
-					}
+			text-align: center;
+			span {
+				transition: margin 0.2s ease;
+				line-height: 40px;
+				&.share_count {
+					float: none;
+					color: #fff;
 				}
 			}
 		}
@@ -158,11 +143,13 @@
 			border: 1px solid #999;
 			&:hover {
 				background-color: #efefef;
+				border-color: #999;
 			}
 		}
 	}
 	.theme-circle-grey li a {
 		background-color: #b0b0b0;
+		border-color: #b0b0b0;
 		span {
 			color: #fff;
 		}

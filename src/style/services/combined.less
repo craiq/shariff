@@ -1,0 +1,65 @@
+@service: addthis, bitcoin, diaspora, facebook, flattr, googleplus, linkedin, mail, pinterest, reddit, stumbleupon, tumblr, twitter, whatsapp, xing;
+
+@addthis: addthis, #f8694d, lighten(#f8694d, @lighten), darken(#f8694d, @darken), lighten(#f8694d, @lighten_bg), plus;
+@bitcoin: bitcoin, #F2911B, lighten(#F2911B, @lighten), darken(#F2911B, @darken), lighten(#F2911B, @lighten_bg), btc;
+@diaspora: diaspora, #999, lighten(#999, @lighten), darken(#999, @darken), lighten(#999, @lighten_bg), times-circle;
+@facebook: facebook, #3b5998, lighten(#3b5998, @lighten), darken(#3b5998, @darken), #dfe3ee, facebook;
+@flattr: flattr, #66b115, lighten(#66b115, @lighten), darken(#66b115, @darken), lighten(#66b115, @lighten_bg), money;
+@googleplus: googleplus, #d34836, lighten(#d34836, @lighten), darken(#d34836, @darken), lighten(#d34836, @lighten_bg), google-plus;
+@linkedin: linkedin, #0077b5, lighten(#0077b5, @lighten), darken(#0077b5, @darken), lighten(#0077b5, @lighten_bg), linkedin;
+@mail: mail, #999, lighten(#999, @lighten), darken(#999, @darken), lighten(#999, @lighten_bg), envelope;
+@pinterest: pinterest, #bd081c, lighten(#bd081c, @lighten), darken(#bd081c, @darken), lighten(#bd081c, @lighten_bg), pinterest-p;
+@reddit: reddit, #FF4500, lighten(#FF4500, @lighten), darken(#FF4500, @darken), lighten(#FF4500, @lighten_bg), reddit;
+@stumbleupon: stumbleupon, #eb4924, lighten(#eb4924, @lighten), darken(#eb4924, @darken), lighten(#eb4924, @lighten_bg), stumbleupon;
+@tumblr: tumblr, #34526f, lighten(#34526f, @lighten), darken(#34526f, @darken), lighten(#34526f, @lighten_bg), tumblr;
+@twitter: twitter, #55acee, lighten(#55acee, @lighten), darken(#55acee, @darken), lighten(#55acee, 30%), twitter;
+@whatsapp: whatsapp, #5cbe4a, lighten(#5cbe4a, @lighten), darken(#5cbe4a, @darken), lighten(#5cbe4a, @lighten_bg), whatsapp;
+@xing: xing, #126567, lighten(#126567, @lighten), darken(#126567, @darken), lighten(#126567, @lighten_bg), xing;
+
+.shariff {
+	.loop-col();
+	.loop-col(@i: 1) when (@i <= length(@service)) {
+		@name:		extract(extract(@service, @i),1);
+		@col:		extract(extract(@service, @i),2);
+		@col-h: 	extract(extract(@service, @i),3);
+		@col-cs: 	extract(extract(@service, @i),4);
+		@col-bgs: 	extract(extract(@service, @i),5);
+		@symbol: 	extract(extract(@service, @i),6);
+		
+		.@{name} {
+			a {
+				background-color: @col;
+				border: 1px solid @col;
+				&:hover {
+					background-color: @col-h;
+					border-color: @col-h;
+				}
+			}
+			.fa-@{name} {
+				font-size: 19px;
+				&:before { content: ~"@{fa-var-@{symbol}}";
+			}
+		}
+		.theme-color, .theme-white, .theme-grey {
+			.@{name} .share_count {
+				color: @col-cs;
+				background-color: @col-bgs;
+			}
+		}
+		.theme-white, .theme-circle-white {
+			.@{name} a span {
+				color: @col !important;
+			}
+		}
+		.theme-grey, .theme-circle-grey {
+			.@{name} a:hover {
+				background-color: @col;
+				border-color: @col;
+			}
+		}
+	}
+		.loop-col((@i + 1));
+	}
+}
+
+

@@ -8,25 +8,23 @@
     .tumblr {
         a {
             background-color: @col-tr;
+			border: 1px solid @col-tr;
             &:hover {
                 background-color: @col-tr-h;
-            }
-			div {
-				border: 1px solid @col-tr;
-				&:hover {
-					border-color: @col-tr-h;
-				}
+				border-color: @col-tr-h;
 			}
         }
         .fa-tumblr {
             font-size: 19px;
 			&:before { content: @fa-var-tumblr; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .tumblr .share_count {
             color: @col-tr-cs;
             background-color: @col-tr-bgs;
         }
-    }
+	}
     .theme-white, .theme-circle-white {
         .tumblr a span {
             color: @col-tr !important;
@@ -35,9 +33,7 @@
 	.theme-grey, .theme-circle-grey {
 		.tumblr a:hover {
 			background-color: @col-tr;
-			div {
-				border-color: @col-tr;
-			}
+			border-color: @col-tr;
 		}
 	}
 }

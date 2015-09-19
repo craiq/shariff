@@ -8,14 +8,10 @@
     .pinterest {
         a {
             background-color: @col-pi;
+			border: 1px solid @col-pi;
             &:hover {
                 background-color: @col-pi-h;
-            }
- 			div {
-				border: 1px solid @col-pi;
-				&:hover {
-					border-color: @col-pi-h;
-				}
+				border-color: @col-pi-h;
 			}
        }
         .fa-pinterest-p {
@@ -24,22 +20,22 @@
             top: 1px;
 			&:before { content: @fa-var-pinterest-p; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .pinterest .share_count {
             color: @col-pi-cs;
             background-color: @col-pi-bgs;
         }
-    }
-    .theme-white, .theme-circle-white {
-        .pinterest a span {
-            color: @col-pi !important;
-        }
-    }
+	}
+	.theme-white, .theme-circle-white {
+		.pinterest a span {
+			color: @col-pi !important;
+		}
+	}
 	.theme-grey, .theme-circle-grey {
 		.pinterest a:hover {
 			background-color: @col-pi;
-			div {
-				border-color: @col-pi;
-			}
+			border-color: @col-pi;
 		}
 	}
 }

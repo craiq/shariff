@@ -6,14 +6,10 @@
     .diaspora {
         a {
             background-color: @col-di;
+			border: 1px solid @col-di;
             &:hover {
                 background-color: @col-di-h;
-            }
-			div {
-				border: 1px solid @col-di;
-				&:hover {
-					border-color: @col-di-h;
-				}
+				border-color: @col-di-h;
 			}
         }
         .fa-times-circle {
@@ -29,9 +25,7 @@
 	.theme-grey, .theme-circle-grey {
 		.diaspora a:hover {
 			background-color: @col-di;
-			div {
-				border-color: @col-di;
-			}
+			border-color: @col-di;
 		}
 	}
 }

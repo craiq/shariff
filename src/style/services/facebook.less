@@ -8,25 +8,23 @@
     .facebook {
         a {
             background-color: @col-fb;
+			border: 1px solid @col-fb;
             &:hover {
                 background-color: @col-fb-h;
-            }
-			div {
-				border: 1px solid @col-fb;
-				&:hover {
-					border-color: @col-fb-h;
-				}
+				border-color: @col-fb-h;
 			}
         }
         .fa-facebook {
             font-size: 19px;
 			&:before { content: @fa-var-facebook; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .facebook .share_count {
             color: @col-fb-cs;
             background-color: @col-fb-bgs;
         }
-    }
+	}
     .theme-white, .theme-circle-white {
         .facebook a span {
             color: @col-fb !important;
@@ -35,10 +33,7 @@
 	.theme-grey, .theme-circle-grey {
 		.facebook a:hover {
 			background-color: @col-fb;
-			div {
-				border-color: @col-fb;
-			}
+			border-color: @col-fb;
 		}
 	}
-
 }

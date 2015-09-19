@@ -8,25 +8,23 @@
     .linkedin {
         a {
             background-color: @col-li;
+			border: 1px solid @col-li;
             &:hover {
                 background-color: @col-li-h;
-            }
-			div {
-				border: 1px solid @col-li;
-				&:hover {
-					border-color: @col-li-h;
-				}
+				border-color: @col-li-h;
 			}
         }
         .fa-linkedin {
             font-size: 19px;
 			&:before { content: @fa-var-linkedin; }
         }
-        .share_count {
+    }
+	.theme-color, .theme-white {
+        .linkedin .share_count {
             color: @col-li-cs;
             background-color: @col-li-bgs;
         }
-    }
+	}
     .theme-white, .theme-circle-white {
         .linkedin a span {
             color: @col-li !important;
@@ -35,9 +33,7 @@
 	.theme-grey, .theme-circle-grey {
 		.linkedin a:hover {
 			background-color: @col-li;
-			div {
-				border-color: @col-li;
-			}
+			border-color: @col-li;
 		}
 	}
 }
