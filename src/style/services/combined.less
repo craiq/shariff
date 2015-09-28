@@ -1,30 +1,34 @@
-@service: addthis, bitcoin, diaspora, facebook, flattr, googleplus, linkedin, mail, pinterest, reddit, stumbleupon, tumblr, twitter, whatsapp, xing;
+@service:
+addthis #f8694d lighten(#f8694d, @lighten) darken(#f8694d, @darken) lighten(#f8694d, @lighten_bg) plus 19px,
+bitcoin #F2911B lighten(#F2911B, @lighten) darken(#F2911B, @darken) lighten(#F2911B, @lighten_bg) btc 19px,
+diaspora #999 lighten(#999, @lighten) darken(#999, @darken) lighten(#999, @lighten_bg) times-circle 18px,
+facebook #3b5998 lighten(#3b5998, @lighten) darken(#3b5998, @darken) #dfe3ee facebook 19px,
+facebooklike #3b5998 lighten(#3b5998, @lighten) darken(#3b5998, @darken) #dfe3ee facebook 19px,
+flattr #66b115 lighten(#66b115, @lighten) darken(#66b115, @darken) lighten(#66b115, @lighten_bg) money 19px,
+googleplus #d34836 lighten(#d34836, @lighten) darken(#d34836, @darken) lighten(#d34836, @lighten_bg) google-plus 19px,
+googleplusplus #d34836 lighten(#d34836, @lighten) darken(#d34836, @darken) lighten(#d34836, @lighten_bg) google-plus 19px,
+linkedin #0077b5 lighten(#0077b5, @lighten) darken(#0077b5, @darken) lighten(#0077b5, @lighten_bg) linkedin 19px,
+mail #999 lighten(#999, @lighten) darken(#999, @darken) lighten(#999, @lighten_bg) envelope 19px,
+pinterest #bd081c lighten(#bd081c, @lighten) darken(#bd081c, @darken) lighten(#bd081c, @lighten_bg) pinterest-p 19px,
+reddit #FF4500 lighten(#FF4500, @lighten) darken(#FF4500, @darken) lighten(#FF4500, @lighten_bg) reddit 19px,
+stumbleupon #eb4924 lighten(#eb4924, @lighten) darken(#eb4924, @darken) lighten(#eb4924, @lighten_bg) stumbleupon 19px,
+tumblr #34526f lighten(#34526f, @lighten) darken(#34526f, @darken) lighten(#34526f, @lighten_bg) tumblr 19px,
+twitter #55acee lighten(#55acee, @lighten) darken(#55acee, @darken) lighten(#55acee, 30%) twitter 24px,
+whatsapp #5cbe4a lighten(#5cbe4a, @lighten) darken(#5cbe4a, @darken) lighten(#5cbe4a, @lighten_bg) whatsapp 22px,
+xing #126567 lighten(#126567, @lighten) darken(#126567, @darken) lighten(#126567, @lighten_bg) xing 19px;
 
-@addthis: addthis, #f8694d, lighten(#f8694d, @lighten), darken(#f8694d, @darken), lighten(#f8694d, @lighten_bg), plus;
-@bitcoin: bitcoin, #F2911B, lighten(#F2911B, @lighten), darken(#F2911B, @darken), lighten(#F2911B, @lighten_bg), btc;
-@diaspora: diaspora, #999, lighten(#999, @lighten), darken(#999, @darken), lighten(#999, @lighten_bg), times-circle;
-@facebook: facebook, #3b5998, lighten(#3b5998, @lighten), darken(#3b5998, @darken), #dfe3ee, facebook;
-@flattr: flattr, #66b115, lighten(#66b115, @lighten), darken(#66b115, @darken), lighten(#66b115, @lighten_bg), money;
-@googleplus: googleplus, #d34836, lighten(#d34836, @lighten), darken(#d34836, @darken), lighten(#d34836, @lighten_bg), google-plus;
-@linkedin: linkedin, #0077b5, lighten(#0077b5, @lighten), darken(#0077b5, @darken), lighten(#0077b5, @lighten_bg), linkedin;
-@mail: mail, #999, lighten(#999, @lighten), darken(#999, @darken), lighten(#999, @lighten_bg), envelope;
-@pinterest: pinterest, #bd081c, lighten(#bd081c, @lighten), darken(#bd081c, @darken), lighten(#bd081c, @lighten_bg), pinterest-p;
-@reddit: reddit, #FF4500, lighten(#FF4500, @lighten), darken(#FF4500, @darken), lighten(#FF4500, @lighten_bg), reddit;
-@stumbleupon: stumbleupon, #eb4924, lighten(#eb4924, @lighten), darken(#eb4924, @darken), lighten(#eb4924, @lighten_bg), stumbleupon;
-@tumblr: tumblr, #34526f, lighten(#34526f, @lighten), darken(#34526f, @darken), lighten(#34526f, @lighten_bg), tumblr;
-@twitter: twitter, #55acee, lighten(#55acee, @lighten), darken(#55acee, @darken), lighten(#55acee, 30%), twitter;
-@whatsapp: whatsapp, #5cbe4a, lighten(#5cbe4a, @lighten), darken(#5cbe4a, @darken), lighten(#5cbe4a, @lighten_bg), whatsapp;
-@xing: xing, #126567, lighten(#126567, @lighten), darken(#126567, @darken), lighten(#126567, @lighten_bg), xing;
+@services: (lenght(@service) + 5);
 
 .shariff {
-	.loop-col();
-	.loop-col(@i: 1) when (@i <= length(@service)) {
+	.loop-service();
+	.loop-service(@i: 1) when (@i <= length(@service)) {
 		@name:		extract(extract(@service, @i),1);
-		@col:		extract(extract(@service, @i),2);
-		@col-h: 	extract(extract(@service, @i),3);
-		@col-cs: 	extract(extract(@service, @i),4);
-		@col-bgs: 	extract(extract(@service, @i),5);
-		@symbol: 	extract(extract(@service, @i),6);
+		@col:		extract(extract(@service, @i),2); /* normal color */
+		@col-h: 	extract(extract(@service, @i),3); /* highlighted */
+		@col-cs: 	extract(extract(@service, @i),4); /* counter text */
+		@col-bgs: 	extract(extract(@service, @i),5); /* counter background */
+		@symbol: 	extract(extract(@service, @i),6); /* fontawesome variablen name */
+		@size: 		extract(extract(@service, @i),7); /* font size of symbol */
 		
 		.@{name} {
 			a {
@@ -36,15 +40,19 @@
 				}
 			}
 			.fa-@{name} {
-				font-size: 19px;
+				font-size: @size;
 				&:before { content: ~"@{fa-var-@{symbol}}";
 			}
 		}
-		.theme-color, .theme-white, .theme-grey {
+		.theme-color, .theme-white {
 			.@{name} .share_count {
 				color: @col-cs;
 				background-color: @col-bgs;
 			}
+		}
+		.theme-grey .@{name} a:hover .share_count {
+			color: @col-cs;
+			background-color: @col-bgs;
 		}
 		.theme-white, .theme-circle-white {
 			.@{name} a span {
@@ -58,8 +66,6 @@
 			}
 		}
 	}
-		.loop-col((@i + 1));
+		.loop-service((@i + 1));
 	}
 }
-
-

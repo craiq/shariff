@@ -1,0 +1,51 @@
+.shariff {
+    .facebooklike {
+        a {
+            background-color: @col-fb;
+			border: 1px solid @col-fb;
+            &:hover {
+                background-color: @col-fb-h;
+				border-color: @col-fb-h;
+			}
+        }
+        .fa-facebooklike {
+            font-size: 19px;
+			&:before { content: @fa-var-facebook; }
+			@media (max-width: 550px) {
+				&:before { content: @fa-var-thumbs-o-up; }
+			}
+        }
+		.shariff-tooltip {
+			iframe {
+				height: 21px;
+				width: 115px;
+			}
+		}
+   }
+	.theme-color, .theme-white {
+        .facebooklike .share_count {
+            color: @col-fb-cs;
+            background-color: @col-fb-bgs;
+        }
+	}
+	.theme-grey .facebooklike a:hover .share_count {
+		color: @col-fb-cs;
+		background-color: @col-fb-bgs;
+	}
+    .theme-white, .theme-circle-white {
+        .facebooklike a span {
+            color: @col-fb !important;
+        }
+    }
+	.theme-grey, .theme-circle-grey {
+		.facebooklike a:hover {
+			background-color: @col-fb;
+			border-color: @col-fb;
+		}
+	}
+	.theme-circle-color, .theme-circle-white, .theme-circle-grey {
+        .fa-facebooklike:before {
+			content: @fa-var-thumbs-o-up;
+		}
+	}
+}
