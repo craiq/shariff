@@ -96,6 +96,22 @@ new Shariff(buttonsContainer, {
 
 You can configure your own build by changing the config.json This allows you the smallest files you need.
 
+## Add or change translations
+
+By modifying the src/l10n.json file you can add or change the translations. Those need to be compiled with 
+
+```sh
+$ grunt l10n
+```
+
+The compiled file (build/shariff.l10n.js) then need to be placed before shariff.min/complete.js on your page. If you don't want this and don't like to waste the few bytes for the implementation you can add following to your config.json
+
+```sh
+...
+],
+"lang": false
+}
+```
 ## How to compile your own
 
 After downloading Shariff, install its dependencies by running `npm install`.

@@ -104,7 +104,7 @@ var Shariff = function(element, options) {
             availableService = availableService(self);
             if (availableService.name === serviceName) {
                 service = availableService;
-				if (typeof shariff_l10n !== 'undefined') {
+				if (process.env.lang && typeof shariff_l10n !== 'undefined') {
 					if (typeof shariff_l10n.share !== 'undefined' && service.shareText.en === 'share') {
 						$.extend(service.shareText, shariff_l10n.share.shareText);
 					}

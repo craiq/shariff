@@ -278,6 +278,12 @@ module.exports = function(grunt) {
 			js.jsonp = false;
 		}
 		
+		if(typeof config.lang !== 'undefined' && config.lang === false) {
+			js.lang = false;
+		} else {
+			js.lang = true;
+		}
+		
 		css = css.substring(1);
 		
 		if( type === 'js' ) {
