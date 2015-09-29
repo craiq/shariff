@@ -60,6 +60,9 @@ var Shariff = function(element, options) {
 	if(process.env.xing) {
 		availableServices.push(require('./services/xing'));
 	}
+	if(process.env.linkedin) {
+		availableServices.push(require('./services/linkedin'));
+	}
 	if(process.env.flattr) {
 		availableServices.push(require('./services/flattr'));
 	}
