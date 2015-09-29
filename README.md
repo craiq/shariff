@@ -92,6 +92,10 @@ new Shariff(buttonsContainer, {
 });
 ```
 
+## Configure your own build
+
+You can configure your own build by changing the config.json This allows you the smallest files you need.
+
 ## How to compile your own
 
 After downloading Shariff, install its dependencies by running `npm install`.
