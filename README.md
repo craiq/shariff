@@ -6,11 +6,13 @@ Shariff enables website users to share their favorite content without compromisi
 
 Available Modules
 
-    * Bitcoin
+    * addthis
+	* Bitcoin
     * Diaspora
     * Facebook
     * Facebook like
-    * Google+
+    * Flattr
+	* Google+
     * Google+ +1
     * Linkedin
     * Pinterest
@@ -90,7 +92,7 @@ new Shariff(buttonsContainer, {
 });
 ```
 
-## Running demo site
+## How to compile your own
 
 After downloading Shariff, install its dependencies by running `npm install`.
 
@@ -98,7 +100,7 @@ After downloading Shariff, install its dependencies by running `npm install`.
 $ git clone https://github.com/heiseonline/shariff.git
 $ cd shariff
 $ npm install
-$ grunt demo
+$ grunt build
 ```
 
 Make sure you have installed the [Grunt CLI](http://gruntjs.com/getting-started#installing-the-cli). Run `grunt demo` to start a local web server which displays several button configurations. The demo page uses [`shariff-backend-node`](https://github.com/heiseonline/shariff-backend-node) to request and display share counts.
@@ -115,7 +117,7 @@ Make sure you have installed the [Grunt CLI](http://gruntjs.com/getting-started#
 | `data-media-url` | Media url to be shared (pinterest) | `null` |
 | `data-orientation` | `vertical` will stack the buttons vertically. | `horizontal`  |
 | `data-referrer-track` | A string that will be appended to the share url. Can be disabled using `null`. | `null` |
-| `data-services`   | An entity-encoded JSON string containing an array of service names to be enabled. Example: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` Available service names: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `more`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin` | Facebook, Facebook-Like, Google+, Twitter, print |
+| `data-services`   | An entity-encoded JSON string containing an array of service names to be enabled. Example: `data-services="[&quot;facebook&quot;,&quot;googleplus&quot;]"` Available service names: `twitter`, `facebook`, `facebooklike`, `googleplus`, `googleplusplus`, `linkedin`, `pinterest`, `xing`, `tumblr`, `whatsapp`, `print`, `mail`, `more`, `info`, `diaspora`, `reddit`, `stumbleupon`, `bitcoin`, `addthis`, `flattr`, `tumblr` | Facebook, Facebook-Like, Google+, Twitter, print |
 | `data-theme`       | We include 6 schemes, `color`, `grey`, `white`, `circle-color`, `circle-white` and `circle-grey`. | `color` |
 | `data-title`       | Title to be used as share text in Twitter/Whatsapp | page's `DC.title`/`DC.creator` or `<title>` |
 | `data-twitter-via` | Screen name of the user to attribute the Tweet to | `null` |

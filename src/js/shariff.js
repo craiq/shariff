@@ -54,7 +54,7 @@ var Shariff = function(element, options) {
 	if(process.env.googleplusplus) {
 		availableServices.push(require('./services/googleplusplus'));
 	}
-	if(process.env.printit) {
+	if(process.env.print) {
 		availableServices.push(require('./services/print'));
 	}
 	if(process.env.xing) {
@@ -317,13 +317,13 @@ Shariff.prototype = {
             }
 
             if (service.popup) {
-                $shareLink.attr('rel', 'popup');
+                $shareLink.attr('data-type', 'popup');
             } else if((process.env.facebooklike || process.env.googleplusplus) && service.tooltip){
-                $shareLink.attr('rel', 'tooltip');
-            } else if(process.env.printit && service.pageprint){
-                $shareLink.attr('rel', 'pageprint');
+                $shareLink.attr('data-type', 'tooltip');
+            } else if(process.env.print && service.pageprint){
+                $shareLink.attr('data-type', 'pageprint');
             } else if(process.env.more && service.more){
-                $shareLink.attr('rel', 'more')
+                $shareLink.attr('data-type', 'more')
 					.data('more', 'true')
 					.data('position', $buttonList.find('li').length + 1);
             } else if (service.blank) {
@@ -334,6 +334,8 @@ Shariff.prototype = {
             // add attributes for screen readers
             $shareLink.attr('role', 'button');
             $shareLink.attr('aria-label', self.getLocalized(service, 'title'));
+			
+			$shareLink.attr('rel', 'nofollow');
 
             $li.append($shareLink);
 
@@ -345,7 +347,7 @@ Shariff.prototype = {
         });
 
         // event delegation
-        $buttonList.on('click', '[rel="popup"]', function(e) {
+        $buttonList.on('click', '[data-type="popup"]', function(e) {
             e.preventDefault();
 
             var url = $(this).attr('href');
@@ -359,7 +361,7 @@ Shariff.prototype = {
         });
 
         if(process.env.facebooklike || process.env.googleplusplus) {
-			$buttonList.on('click', '[rel="tooltip"]', function(e) {
+			$buttonList.on('click', '[data-type="tooltip"]', function(e) {
 				e.preventDefault();
 				var url = $(this).attr('href'),
 					tool = this,
@@ -417,8 +419,8 @@ Shariff.prototype = {
 			});
 		}
 		
-		if(process.env.printit) {
-			$buttonList.on('click', '[rel="pageprint"]', function(e) {
+		if(process.env.print) {
+			$buttonList.on('click', '[data-type="pageprint"]', function(e) {
             e.preventDefault();
 			window.print();
         });
@@ -431,7 +433,7 @@ Shariff.prototype = {
 				$buttonList.find('li:nth-child(n+' + (i + 2) + ')').hide();
 			}
 	
-			$buttonList.on('click', '[rel="more"]', function(e) {
+			$buttonList.on('click', '[data-type="more"]', function(e) {
 				e.preventDefault();
 				var more = $(this).data('more') === 'true' ? true : false,
 					posi = $(this).data('position'),
