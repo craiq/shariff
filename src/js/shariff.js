@@ -28,8 +28,6 @@ var url = require('url');
 var Shariff = function(element, options) {
     var self = this;
 	
-	console.log(process.env.service);
-
     // the DOM element that will contain the buttons
     this.element = element;
 
@@ -257,7 +255,14 @@ Shariff.prototype = {
         var baseUrl = url.parse(this.options.backendUrl, true);
         baseUrl.query.url = this.getURL();
         delete baseUrl.search;
-        return $.getJSON(url.format(baseUrl));
+		if(process.env.jsonp === true) {
+			return $.ajax({
+				  url: url.format(baseUrl),
+				  dataType: 'jsonp',
+			});
+		} else {
+			return $.getJSON(url.format(baseUrl));
+		}
     },
 
     // add value of shares for each service

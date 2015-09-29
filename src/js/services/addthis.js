@@ -9,7 +9,7 @@ module.exports = function(shariff) {
             'en': 'share',
         },
         name: 'addthis',
-        faName: 'fa-addthis',
+        faName: 'fa-plus',
         title: {
             'de': 'Bei AddThis teilen',
             'en': 'Share on AddThis',

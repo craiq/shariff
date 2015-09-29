@@ -1,0 +1,76 @@
+{
+	"addthis": {
+		"col": "#f8694d",
+		"fa_var": "plus"
+	},
+	"bitcoin": {
+		"col": "#F2911B",
+		"fa_var": "btc"
+	},
+	"diaspora": {
+		"col": "#999",
+		"fa_var": "times-circle",
+		"size": "18px"
+	},
+	"facebook": {
+		"col": "#3b5998",
+		"col_counterbg": "#dfe3ee"
+	},
+	"facebooklike": {
+		"col": "#3b5998",
+		"col_counterbg": "#dfe3ee",
+		"fa_var": "facebook"
+	},
+	"googleplus": {
+		"col": "#d34836",
+		"fa_var": "google-plus"
+	},
+	"googleplusplus": {
+		"col": "#d34836",
+		"fa_var": "google-plus"
+	},
+	"linkedin": {
+		"col": "#0077b5"
+	},
+	"print": {
+		"predefined": "true"
+	},
+	"xing": {
+		"col": "#126567"
+	},
+	"flattr": {
+		"col": "#66b115",
+		"fa_var": "money"
+	},
+	"mail": {
+		"col": "#999",
+		"fa_var": "envelope"
+	},
+	"pinterest": {
+		"col": "#bd081c",
+		"fa_var": "pinterest-p"
+	},
+	"reddit": {
+		"col": "#FF4500"
+	},
+	"tumblr": {
+		"col": "#34526f"
+	},
+	"twitter": {
+		"col": "#55acee",
+		"size": "24px"
+	},
+	"whatsapp": {
+		"col": "#5cbe4a",
+		"size": "22px"
+	},
+	"stumbleupon": {
+		"col": "#eb4924"
+	},
+	"info": {
+		"predefined": "true"
+	},
+	"more": {
+		"predefined": "true"
+	}
+}

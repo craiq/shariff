@@ -44,7 +44,10 @@ module.exports = function(grunt) {
             },
             dist_complete_min: {
                 options: {
-                    transform: [ ['uglifyify', { global: true } ] ]
+                    transform: [ 
+						['uglifyify', { global: true } ] ,
+						['envify', services('js')]
+					],
                 },
                 src: 'src/js/shariff.js',
                 dest: 'build/shariff.complete.js'
@@ -54,30 +57,7 @@ module.exports = function(grunt) {
                     transform: [
                         ['uglifyify', { global: true } ],
                         ['browserify-shim', { global: true } ],
-						['envify', 
-							{ 
-								addthis: false,  
-								facebook: true,  
-								facebooklike: true,  
-								googleplus: true,  
-								googleplusplus: false,  
-								linkedin: true,  
-								printit: true,  
-								xing: true,  
-								flattr: false,  
-								info: false,  
-								mail: false,  
-								pinterest: false,  
-								reddit: false,  
-								tumblr: false,  
-								twitter: true,  
-								whatsapp: false,  
-								diaspora: false,  
-								stumbleupon: false,  
-								bitcoin: false,  
-								more: false,  
-							}
-						]
+						['envify', services('js')]
                     ]
                 },
                 src: 'src/js/shariff.js',
@@ -85,7 +65,10 @@ module.exports = function(grunt) {
             },
             demo: {
                 options: {
-                    transform: [ ['uglifyify', { global: true } ] ],
+                    transform: [ 
+						['uglifyify', { global: true } ] ,
+						['envify', services('js')]
+					],
                     watch: true
                 },
                 src: 'src/js/shariff.js',
@@ -136,8 +119,11 @@ module.exports = function(grunt) {
             demo: {
                 options: {
                     modifyVars: {
-                        'fa-font-path': '"https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"'
-                    },
+                        'fa-font-path': '"https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"',
+						'service': services('css'),
+ 						'additional': addservice(),
+						'services': addservice(true)
+                   },
                     sourceMap: true,
                     outputSourceFiles: true,
                     sourceMapFileInline: true,
@@ -154,14 +140,24 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    modifyVars: {
-                        'fa-font-path': '"https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"'
+					modifyVars: {
+                        'fa-font-path': '"https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"',
+						'service': services('css'),
+						'additional': addservice(),
+						'services': addservice(true)
                     }
                 },
                 src: 'src/style/shariff-complete.less',
                 dest: 'build/shariff.complete.css'
             },
             dist_min: {
+                options: {
+					modifyVars: {
+						'service': services('css'),
+						'additional': addservice(),
+						'services': addservice(true)
+                    }
+                },
                 src: 'src/style/shariff.less',
                 dest: 'build/shariff.min.css'
             }
@@ -211,6 +207,107 @@ module.exports = function(grunt) {
             }
         }
     });
+	
+	function services(type) {
+		var data = fs.readFileSync('config.json', 'utf8', function (err, data) {
+			if (err) {
+				throw err;
+			}
+			return data;
+		});
+		var services_data = fs.readFileSync('services.json', 'utf8', function (err, data) {
+			if (err) {
+				throw err;
+			}
+			return data;
+		});
+
+		var aviableservices = JSON.parse(services_data);
+		var config = JSON.parse(data);
+		var js = {};
+		var css = '';
+		
+		for(var e in aviableservices) {
+			if (aviableservices.hasOwnProperty(e)) {
+				var obj = aviableservices[e];
+				if(config.services.indexOf(e) >= 0 && typeof obj.col !== 'undefined') {
+					
+					js[e] = true;
+					
+					css += ', ';
+					css += e;
+					css += ' ' + obj.col;
+					if(typeof obj.col_highlighted !== 'undefined') {
+						css += ' ' + obj.col_highlighted;
+					} else {
+						css += ' lighten(' + obj.col + ', @lighten)';
+					}
+					if(typeof obj.col_counter !== 'undefined') {
+						css += ' ' + obj.col_counter;
+					} else {
+						css += ' darken(' + obj.col + ', @darken)';
+					}
+					if(typeof obj.col_counterbg !== 'undefined') {
+						css += ' ' + obj.col_counterbg;
+					} else {
+						css += ' lighten(' + obj.col + ', @lighten_bg)';
+					}
+					if(typeof obj.fa_var !== 'undefined') {
+						css += ' ' + obj.fa_var;
+					} else {
+						css += ' ' + e;
+					}
+					if(typeof obj.size !== 'undefined') {
+						css += ' ' + obj.size;
+					} else {
+						css += ' 19px';
+					}
+					
+					
+				} else if (config.services.indexOf(e) >= 0 && typeof obj.predefined !== 'undefined') {
+					js[e] = true;
+				} else {
+					js[e] = false;
+				}
+			}
+		}
+		
+		if(typeof config.jsonp !== 'undefined' && config.jsonp === true) {
+			js.jsonp = true;
+		} else {
+			js.jsonp = false;
+		}
+		
+		css = css.substring(1);
+		
+		if( type === 'js' ) {
+			return js;
+		}
+		if( type === 'css' ) {
+			return css;
+		}
+	}
+	function addservice(count) {
+		var data = fs.readFileSync('config.json', 'utf8', function (err, data) {
+			if (err) {
+				throw err;
+			}
+			return data;
+		});
+		var config = JSON.parse(data);
+		if(count) {
+			return config.services.length;
+		}
+		var add = ['facebooklike', 'googleplusplus', 'info', 'more', 'print'];
+		var adds = '';
+		
+		add.forEach(function(service) {
+			if(config.services.indexOf(service) >= 0) {
+				adds += ', ' + service;
+			}
+		});
+		return adds.substring(1);
+	}
 
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-copy');

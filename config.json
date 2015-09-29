@@ -1,0 +1,5 @@
+{
+	"services": [
+		"facebook", "facebooklike", "googleplus", "googleplusplus", "twitter", "info", "addthis", "bitcoin", "diaspora", "linkedin", "print", "xing", "flattr", "mail", "pinterest", "tumblr", "whatsapp", "reddit", "stumbleupon", "more"
+	]
+}

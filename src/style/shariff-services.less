@@ -1,11 +1,36 @@
 // Anzahl Services
 @import "services/combined";
-@import "services/more";
+
+@additional: '';
+
+.loop-addservice();
+.loop-addservice(@i: 1) when (@i <= length(@additional)) {
+	@service: extract(@additional, @i);
+	.import(@service);
+	.loop-addservice((@i + 1));
+}
+.import (@service) when (@service = facebooklike) {
+	@import "services/facebooklike";
+};
+.import (@service) when (@service = googleplusplus) {
+	@import "services/googleplusplus";
+};
+.import (@service) when (@service = print) {
+	@import "services/print";
+};
+.import (@service) when (@service = info) {
+	@import "services/info";
+};
+.import (@service) when (@service = more) {
+	@import "services/more";
+};
+
+/*@import "services/more";
 @import "services/facebooklike";
 @import "services/googleplusplus";
 @import "services/print";
 @import "services/info";
-/*@services: 15;  //max number of columns
+@services: 15;  //max number of columns
 
 @import "services/facebook";
 @import "services/googleplus";
