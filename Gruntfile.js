@@ -122,7 +122,8 @@ module.exports = function(grunt) {
                         'fa-font-path': config('fontpath_demo'),
 						'service': config('css'),
  						'additional': addservice(),
-						'services': config('count')
+						'services': config('count'),
+						'custom': config('custom')
                    },
                     sourceMap: true,
                     outputSourceFiles: true,
@@ -144,7 +145,8 @@ module.exports = function(grunt) {
                         'fa-font-path': config('fontpath'),
 						'service': config('css'),
 						'additional': addservice(),
-						'services': config('count')
+						'services': config('count'),
+						'custom': config('custom')
                     }
                 },
                 src: 'src/style/shariff-complete.less',
@@ -155,7 +157,8 @@ module.exports = function(grunt) {
 					modifyVars: {
 						'service': config('css'),
 						'additional': addservice(),
-						'services': config('count')
+						'services': config('count'),
+						'custom': config('custom')
                     }
                 },
                 src: 'src/style/shariff.less',
@@ -236,12 +239,20 @@ module.exports = function(grunt) {
 			}
 		}
 		if(type === 'fontpath_demo') {
-			if(typeof conf.fontpath !== 'undefined') {
-				return '"' + conf.fontpath + '"';
+			if(typeof conf.fontpath_demo !== 'undefined') {
+				return '"' + conf.fontpath_demo + '"';
 			} else {
 				return '"https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"';
 			}
 		}
+		if(type === 'custom') {
+			if(typeof conf.css !== 'undefined') {
+				return '"' + conf.css + '"';
+			} else {
+				return '""';
+			}
+		}
+
 		var js = {};
 		var css = '';
 		for(var e in aviableservices) {

@@ -9,7 +9,11 @@
 @lighten_bg: 40%;
 @darken: 10%;
 
+@custom: '';
+@insert: ';@{custom}';
+
 .shariff {
+	order: ~"@{insert}";
     &::after,
     &::before {
         content: " ";
@@ -18,8 +22,6 @@
     &::after {
         clear: both;
     }
-/*	margin-left: -4px;
-	margin-right: -4px;*/
 	.loop-col(@services);
 	.loop-col(@n, @i: 1) when (@i <= @n) {
 		.col-@{i} li {
