@@ -53,7 +53,31 @@ module.exports = function(grunt) {
                 options: {
                     transform: [
                         ['uglifyify', { global: true } ],
-                        ['browserify-shim', { global: true } ]
+                        ['browserify-shim', { global: true } ],
+						['envify', 
+							{ 
+								addthis: false,  
+								facebook: true,  
+								facebooklike: true,  
+								googleplus: true,  
+								googleplusplus: false,  
+								linkedin: true,  
+								printit: true,  
+								xing: true,  
+								flattr: false,  
+								info: false,  
+								mail: false,  
+								pinterest: false,  
+								reddit: false,  
+								tumblr: false,  
+								twitter: true,  
+								whatsapp: false,  
+								diaspora: false,  
+								stumbleupon: false,  
+								bitcoin: false,  
+								more: false,  
+							}
+						]
                     ]
                 },
                 src: 'src/js/shariff.js',

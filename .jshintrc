@@ -149,7 +149,7 @@
     // Maximum block nesting depth.
     "maxdepth": 5,
     // Maximum number of statements per function.
-    "maxstatements": 25,
+    "maxstatements": 50,
     // Maximum cyclomatic complexity.
-    "maxcomplexity": 14
+    "maxcomplexity": 25
 }
