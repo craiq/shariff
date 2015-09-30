@@ -303,7 +303,7 @@ Shariff.prototype = {
         // add html for service-links
 		$.each(this.services, function (key, service) {
             var $li = $('<li>').addClass('shariff-button').addClass(service.name);
-            var $shareText = $('<span>').addClass('share_text').text(self.getLocalized(service, 'shareText'));
+            var $shareText = $('<span>').addClass('share_text').text(self.getLocalized(service, 'shareText')).prepend('\n');
 
             var $shareLink = $('<a>').data('key', key);
 			  
@@ -316,7 +316,7 @@ Shariff.prototype = {
 			}
 
             if (typeof service.faName !== 'undefined') {
-                $shareLink.prepend($('<span>').addClass('fa').addClass(service.faName));
+                $shareLink.prepend($('<span>').addClass('fa').addClass(service.faName).attr('aria-hidden', 'true'));
             }
 
             if (service.popup) {
@@ -335,8 +335,8 @@ Shariff.prototype = {
             $shareLink.attr('title', self.getLocalized(service, 'title'));
 
             // add attributes for screen readers
-            $shareLink.attr('role', 'button');
-            $shareLink.attr('aria-label', self.getLocalized(service, 'title'));
+/*            $shareLink.attr('role', 'button'); // both useless
+            $shareLink.attr('aria-label', self.getLocalized(service, 'title'));*/
 			
 			$shareLink.attr('rel', 'nofollow');
 
@@ -433,7 +433,7 @@ Shariff.prototype = {
 			
 			if($buttonList.find('.shariff-button.more').length > 0) {
 				var i = $buttonList.find('li').index($buttonList.find('.shariff-button.more'));
-				$buttonList.find('li:nth-child(n+' + (i + 2) + ')').hide();
+				$buttonList.find('li:nth-child(n+' + (i + 2) + ')').attr('data-more', 'hide').insertBefore($buttonList.find('li.more')).hide();
 			}
 	
 			$buttonList.on('click', '[data-type="more"]', function(e) {
@@ -444,28 +444,26 @@ Shariff.prototype = {
 				if (more) {
 					$(this).find('.fa-plus').removeClass('fa-plus').addClass('fa-minus');
 					$(this).find('.share_text').text(self.getLocalized(service, 'lessText'));
-					$(this).closest('ul').find('li:nth-child(n+' + (posi + 1) + ')').show();
 					$(this).closest('ul').removeClass('more-' + posi);
-					$(this).closest('li').appendTo($(this).closest('ul'));
+					$(this).closest('li').siblings('[data-more="hide"]').show();
 					$(this).data('more', 'false');
 				} else {
 					$(this).find('.fa-minus').removeClass('fa-minus').addClass('fa-plus');
 					$(this).find('.share_text').text(self.getLocalized(service, 'shareText'));
 					$(this).closest('ul').addClass('more-' + posi);
-					$(this).closest('li').insertAfter($(this).closest('ul').find('li:nth-child(' + (posi - 1) + ')'));
-					$(this).closest('ul').find('li:nth-child(n+' + (posi + 1) + ')').hide();
+					$(this).closest('li').siblings('[data-more="hide"]').hide();
 					$(this).data('more', 'true');
 				}
 			});
 		}
 		
 		$buttonList
-			.on('mouseenter', function() {
+			.on('mouseenter focusin', function() {
 				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
 					$(this).find('span.share_count').css('margin-top', '-20px').siblings('.fa').css('margin-top', '-35px');
 				}
 		})
-			.on('mouseleave', function() {
+			.on('mouseleave focusout', function() {
 				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
 					$(this).find('span.share_count').css('margin-top', '').siblings('.fa').css('margin-top', '');
 				}

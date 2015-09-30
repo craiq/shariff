@@ -4,9 +4,6 @@
 		@j: (@i+1);
 		.more-@{i} li {
 			width: (100% / @i);
-			&:nth-child(n+@{j}) {
-				display: none;
-			}
 		}
 		.loop-col(@n, (@i + 1));
 	}
