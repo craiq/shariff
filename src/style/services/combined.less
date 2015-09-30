@@ -17,7 +17,7 @@
 			a {
 				background-color: @col;
 				border: 1px solid @col;
-				&:hover {
+				&:hover, &:focus {
 					background-color: @col-h;
 					border-color: @col-h;
 				}
@@ -35,7 +35,7 @@
 				background-color: @col-bgs;
 			}
 		}
-		.theme-grey .@{name} a:hover .share_count {
+		.theme-grey .@{name} a:hover .share_count, .theme-grey .@{name} a:focus .share_count {
 			color: @col-cs;
 			background-color: @col-bgs;
 		}
@@ -45,7 +45,7 @@
 			}
 		}
 		.theme-grey, .theme-circle-grey {
-			.@{name} a:hover {
+			.@{name} a:hover, .@{name} a:focus {
 				background-color: @col;
 				border-color: @col;
 			}

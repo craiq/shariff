@@ -281,7 +281,11 @@ Shariff.prototype = {
             if(value >= 1000) {
                 value = Math.round(value / 1000) + 'k';
             }
-            $(self.element).find('.' + key + ' a span:first').after($('<span>').addClass('share_count').text(value));
+            $(self.element).find('.' + key + ' a span:first').after($('<span>').addClass('share_count').text(value).append('\n'));
+			var a = $(self.element).find('.' + key + ' a'),
+				aria = a.attr('aria-label');
+			a.attr('aria-label', value + ' ' + aria);
+			
         });
     },
 
@@ -303,7 +307,7 @@ Shariff.prototype = {
         // add html for service-links
 		$.each(this.services, function (key, service) {
             var $li = $('<li>').addClass('shariff-button').addClass(service.name);
-            var $shareText = $('<span>').addClass('share_text').text(self.getLocalized(service, 'shareText')).prepend('\n');
+            var $shareText = $('<span>').addClass('share_text').text(self.getLocalized(service, 'shareText'));
 
             var $shareLink = $('<a>').data('key', key);
 			  
@@ -335,8 +339,8 @@ Shariff.prototype = {
             $shareLink.attr('title', self.getLocalized(service, 'title'));
 
             // add attributes for screen readers
-/*            $shareLink.attr('role', 'button'); // both useless
-            $shareLink.attr('aria-label', self.getLocalized(service, 'title'));*/
+			/*$shareLink.attr('role', 'button');*/
+            $shareLink.attr('aria-label', self.getLocalized(service, 'title'));
 			
 			$shareLink.attr('rel', 'nofollow');
 
@@ -434,6 +438,7 @@ Shariff.prototype = {
 			if($buttonList.find('.shariff-button.more').length > 0) {
 				var i = $buttonList.find('li').index($buttonList.find('.shariff-button.more'));
 				$buttonList.find('li:nth-child(n+' + (i + 2) + ')').attr('data-more', 'hide').insertBefore($buttonList.find('li.more')).hide();
+				$buttonList.find('li.more a').attr('aria-expanded', 'false');
 			}
 	
 			$buttonList.on('click', '[data-type="more"]', function(e) {
@@ -446,13 +451,13 @@ Shariff.prototype = {
 					$(this).find('.share_text').text(self.getLocalized(service, 'lessText'));
 					$(this).closest('ul').removeClass('more-' + posi);
 					$(this).closest('li').siblings('[data-more="hide"]').show();
-					$(this).data('more', 'false');
+					$(this).data('more', 'false').attr('aria-expanded', 'true');
 				} else {
 					$(this).find('.fa-minus').removeClass('fa-minus').addClass('fa-plus');
 					$(this).find('.share_text').text(self.getLocalized(service, 'shareText'));
 					$(this).closest('ul').addClass('more-' + posi);
 					$(this).closest('li').siblings('[data-more="hide"]').hide();
-					$(this).data('more', 'true');
+					$(this).data('more', 'true').attr('aria-expanded', 'false');
 				}
 			});
 		}
@@ -460,7 +465,7 @@ Shariff.prototype = {
 		$buttonList
 			.on('mouseenter focusin', function() {
 				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-					$(this).find('span.share_count').css('margin-top', '-20px').siblings('.fa').css('margin-top', '-35px');
+					$(this).find('span.share_count').css('margin-top', '-17px').siblings('.fa').css('margin-top', '-35px');
 				}
 		})
 			.on('mouseleave focusout', function() {
