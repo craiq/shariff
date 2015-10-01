@@ -9,13 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heiseonline/shariff"
+    "url": "https://github.com/craiq/shariff"
   },
   "author": {
-    "name": "Ines Pauer",
-    "email": "ipa@heise.de"
+    "name": "Benjamin Schirrmeister",
+    "email": "benjamin.schirrmeister@gmail.com"
   },
   "contributors": [
+    {
+      "name": "Ines Pauer",
+      "email": "ipa@heise.de"
+    },
     {
       "name": "Philipp Busse",
       "email": "pmb@heise.de"

@@ -2,7 +2,7 @@
 /*!
  * shariff - v - 01.10.2015
  * https://github.com/heiseonline/shariff
- * Copyright (c) 2015 Ines Pauer, Philipp Busse, Sebastian Hilbig, Erich Kramer, Deniz Sesli
+ * Copyright (c) 2015 Benjamin Schirrmeister, Ines Pauer, Philipp Busse, Sebastian Hilbig, Erich Kramer, Deniz Sesli
  * Licensed under the MIT license
  */
 
