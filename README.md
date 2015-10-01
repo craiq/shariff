@@ -96,6 +96,17 @@ new Shariff(buttonsContainer, {
 
 You can configure your own build by changing the config.json This allows you the smallest files you need.
 
+| Attribute        | Description | Default |
+|------------------|-------------|---------|
+| "services" | Add just those services you need e.g  | "" |
+| "lang" | Set if you want to read in the shariff.l10n.js  | "true" |
+| "fontpath" | Set your own fontpath  | online resource |
+| "css" | Add some custom css to the css shariff class  | "" |
+| "jsonp" | Asks the counts as jsonp  | "false" |
+
+Jsonp is just needed, when you get the counts from a remote server and use https.
+You also have to modify your backend for this. Here is a [modified php version](https://github.com/craiq/shariff-backend-php).
+
 ## Add or change translations
 
 By modifying the src/l10n.json file you can add or change the translations. Those need to be compiled with 
