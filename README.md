@@ -98,7 +98,7 @@ You can configure your own build by changing the config.json This allows you the
 
 | Attribute        | Description | Default |
 |------------------|-------------|---------|
-| "services" | Add just those services you need e.g  | "" |
+| "services" | Add just those services you need  | "" |
 | "lang" | Set if you want to read in the shariff.l10n.js  | "true" |
 | "fontpath" | Set your own fontpath  | online resource |
 | "css" | Add some custom css to the css shariff class  | "" |
