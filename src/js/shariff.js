@@ -474,12 +474,12 @@ Shariff.prototype = {
 			$buttonList
 				.on('mouseenter focusin', function() {
 					if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-						$(this).find('span.share_count').css('margin-top', '-17px').siblings('.fa').css('margin-top', '-35px');
+						$(this).find('span.share_count').css('top', '-40px').siblings('.fa').css('top', '-40px');
 					}
 			})
 				.on('mouseleave focusout', function() {
 					if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-						$(this).find('span.share_count').css('margin-top', '').siblings('.fa').css('margin-top', '');
+						$(this).find('span.share_count').css('top', '').siblings('.fa').css('top', '');
 					}
 			});
 		}

@@ -99,10 +99,12 @@ You can configure your own build by changing the config.json This allows you the
 | Attribute        | Description | Default |
 |------------------|-------------|---------|
 | "services" | Add just those services you need  | "" |
-| "lang" | Set if you want to read in the shariff.l10n.js  | "true" |
+| "default_services" | Services that show, when you don't set data-services | ["twitter", "facebook", "googleplus", "info"] |
+| "lang" | Set if you want to read in the shariff.l10n.js  | true |
 | "fontpath" | Set your own fontpath  | online resource |
 | "css" | Add some custom css to the css shariff class  | "" |
-| "jsonp" | Asks the counts as jsonp  | "false" |
+| "jsonp" | Asks the counts as jsonp  | false |
+| "circle" | Support for circle themes | true |
 
 Jsonp is just needed, when you get the counts from a remote server and use https.
 You also have to modify your backend for this. Here is a [modified php version](https://github.com/craiq/shariff-backend-php).

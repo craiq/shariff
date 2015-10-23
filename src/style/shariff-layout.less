@@ -15,6 +15,7 @@
 @tooltip: '';
 
 .shariff {
+	font-size: 16px;
 	order: ~"@{insert}";
     &::after,
     &::before {
@@ -129,9 +130,12 @@
 				max-width: 40px;
 				border-radius: 50%;
 				text-align: center;
+				position: relative;
 				span {
-					transition: margin 0.2s ease;
+					transition: top 0.2s ease;
 					line-height: 40px;
+					position: relative;
+					top: 0;
 					&.share_count {
 						float: none;
 					}
