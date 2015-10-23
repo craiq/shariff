@@ -42,13 +42,26 @@
 				background-color: @col-bgs;
 			}
 		}
-		.theme-white, .theme-circle-white {
-			.@{name} a span {
+
+		.theme-white .@{name} {
+			a span {
 				color: @col !important;
 			}
 		}
-		.theme-grey, .theme-circle-grey {
-			.@{name} a:hover, .@{name} a:focus {
+		.theme-circle-white .@{name} when (@circle=true) {
+			a span {
+				color: @col !important;
+			}
+		}
+		
+		.theme-grey .@{name} {
+			 a:hover, a:focus {
+				background-color: @col;
+				border-color: @col;
+			}
+		}
+		.theme-circle-grey .@{name} when (@circle=true) {
+			 a:hover, a:focus {
 				background-color: @col;
 				border-color: @col;
 			}

@@ -274,7 +274,7 @@ module.exports = function(grunt) {
 				return 'false';
 			}
 		}
-
+		
 		var js = {};
 		var css = '';
 		for(var e in aviableservices) {
@@ -345,6 +345,12 @@ module.exports = function(grunt) {
 			js.circle = true;
 		}
 		
+		if ( typeof conf.default_services !== 'undefined' && conf.default_services.length > 0 ) {
+			js.defs = conf.default_services;
+		} else {
+			js.defs = ['twitter', 'facebook', 'googleplus', 'info'];
+		}
+
 		css = css.substring(1);
 		
 		if( type === 'js' ) {

@@ -1,0 +1,7 @@
+{
+	"services": [
+		"facebook", "googleplus", "twitter", "info", "addthis", "diaspora", "linkedin", "xing", "flattr", "mail", "pinterest", "tumblr", "whatsapp"
+	],
+	"lang": false,
+	"circle": false
+}

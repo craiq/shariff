@@ -1,6 +1,6 @@
 'use strict';
 
-/*globals shariff_l10n */
+/*globals shariff_l10n, process, require */
 
 if(typeof String.prototype.trim !== 'function') {
   String.prototype.trim = function() {
@@ -181,7 +181,7 @@ Shariff.prototype = {
         referrerTrack: null,
 
         // services to be enabled in the following order
-        services   : [ 'facebook', 'facebooklike','twitter', 'googleplus', 'print'],
+        services   : process.env.defs,
 
         title: function() {
             return $('head title').text();
