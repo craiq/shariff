@@ -290,6 +290,11 @@ module.exports = function(grunt) {
 					} else {
 						css += ' 19px';
 					}
+					if(typeof obj.count !== 'undefined') {
+						css += ' true';
+					} else {
+						css += ' false';
+					}
 					
 					
 				} else if (conf.services.indexOf(e) >= 0 && typeof obj.predefined !== 'undefined') {

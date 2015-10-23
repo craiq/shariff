@@ -14,29 +14,35 @@
 	},
 	"facebook": {
 		"col": "#3b5998",
-		"col_counterbg": "#dfe3ee"
+		"col_counterbg": "#dfe3ee",
+		"count": "true"
 	},
 	"facebooklike": {
 		"col": "#3b5998",
 		"col_counterbg": "#dfe3ee",
-		"fa_var": "facebook"
+		"fa_var": "facebook",
+		"count": "true"
 	},
 	"googleplus": {
 		"col": "#d34836",
-		"fa_var": "google-plus"
+		"fa_var": "google-plus",
+		"count": "true"
 	},
 	"googleplusplus": {
 		"col": "#d34836",
-		"fa_var": "google-plus"
+		"fa_var": "google-plus",
+		"count": "true"
 	},
 	"linkedin": {
-		"col": "#0077b5"
+		"col": "#0077b5",
+		"count": "true"
 	},
 	"print": {
 		"predefined": "true"
 	},
 	"xing": {
-		"col": "#126567"
+		"col": "#126567",
+		"count": "true"
 	},
 	"flattr": {
 		"col": "#66b115",
@@ -58,7 +64,8 @@
 	},
 	"twitter": {
 		"col": "#55acee",
-		"size": "24px"
+		"size": "24px",
+		"count": "true"
 	},
 	"whatsapp": {
 		"col": "#5cbe4a",

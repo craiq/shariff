@@ -12,6 +12,7 @@
 		@col-bgs: 	extract(extract(@service, @i),5); /* counter background */
 		@symbol: 	extract(extract(@service, @i),6); /* fontawesome variablen name */
 		@size: 		extract(extract(@service, @i),7); /* font size of symbol */
+		@count: 	extract(extract(@service, @i),8); /* has count defined */
 		
 		.@{name} {
 			a {
@@ -30,14 +31,16 @@
 			}
 		}
 		.theme-color, .theme-white {
-			.@{name} .share_count {
+			.@{name} .share_count when (@count=true) {
 				color: @col-cs;
 				background-color: @col-bgs;
 			}
 		}
-		.theme-grey .@{name} a:hover .share_count, .theme-grey .@{name} a:focus .share_count {
-			color: @col-cs;
-			background-color: @col-bgs;
+		.theme-grey .@{name} a:hover, .theme-grey .@{name} a:focus {
+			.share_count when (@count=true) {
+				color: @col-cs;
+				background-color: @col-bgs;
+			}
 		}
 		.theme-white, .theme-circle-white {
 			.@{name} a span {
