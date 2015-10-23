@@ -470,17 +470,19 @@ Shariff.prototype = {
 			});
 		}
 		
-		$buttonList
-			.on('mouseenter focusin', function() {
-				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-					$(this).find('span.share_count').css('margin-top', '-17px').siblings('.fa').css('margin-top', '-35px');
-				}
-		})
-			.on('mouseleave focusout', function() {
-				if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-					$(this).find('span.share_count').css('margin-top', '').siblings('.fa').css('margin-top', '');
-				}
-		});
+		if ( process.env.circle ) {
+			$buttonList
+				.on('mouseenter focusin', function() {
+					if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
+						$(this).find('span.share_count').css('margin-top', '-17px').siblings('.fa').css('margin-top', '-35px');
+					}
+			})
+				.on('mouseleave focusout', function() {
+					if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
+						$(this).find('span.share_count').css('margin-top', '').siblings('.fa').css('margin-top', '');
+					}
+			});
+		}
 
         $socialshareElement.append($buttonList);
     }

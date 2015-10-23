@@ -123,7 +123,9 @@ module.exports = function(grunt) {
 						'service': config('css'),
  						'additional': addservice(),
 						'services': config('count'),
-						'custom': config('custom')
+						'custom': config('custom'),
+						'circle': config('circle'),
+						'tooltip': config('tooltip')
                    },
                     sourceMap: true,
                     outputSourceFiles: true,
@@ -146,7 +148,9 @@ module.exports = function(grunt) {
 						'service': config('css'),
 						'additional': addservice(),
 						'services': config('count'),
-						'custom': config('custom')
+						'custom': config('custom'),
+						'circle': config('circle'),
+						'tooltip': config('tooltip')
                     }
                 },
                 src: 'src/style/shariff-complete.less',
@@ -158,7 +162,9 @@ module.exports = function(grunt) {
 						'service': config('css'),
 						'additional': addservice(),
 						'services': config('count'),
-						'custom': config('custom')
+						'custom': config('custom'),
+						'circle': config('circle'),
+						'tooltip': config('tooltip')
                     }
                 },
                 src: 'src/style/shariff.less',
@@ -253,6 +259,22 @@ module.exports = function(grunt) {
 			}
 		}
 
+		if(type === 'circle') {
+			if(typeof conf.circle !== 'undefined' && conf.circle === false) {
+				return 'false';
+			} else {
+				return 'true';
+			}
+		}
+
+		if(type === 'tooltip') {
+			if ( conf.services.indexOf('facebooklike') >= 0 || conf.services.indexOf('googleplusplus') >= 0 ) {
+				return 'true';
+			} else {
+				return 'false';
+			}
+		}
+
 		var js = {};
 		var css = '';
 		for(var e in aviableservices) {
@@ -315,6 +337,12 @@ module.exports = function(grunt) {
 			js.lang = false;
 		} else {
 			js.lang = true;
+		}
+		
+		if(typeof conf.circle !== 'undefined' && conf.circle === false) {
+			js.circle = false;
+		} else {
+			js.circle = true;
 		}
 		
 		css = css.substring(1);

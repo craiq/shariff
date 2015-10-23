@@ -11,6 +11,8 @@
 
 @custom: '';
 @insert: ';@{custom}';
+@circle: '';
+@tooltip: '';
 
 .shariff {
 	order: ~"@{insert}";
@@ -115,63 +117,68 @@
 			color: #333;
 		}
     }
-	.theme-circle-color, .theme-circle-grey, .theme-circle-white {
-		li {
-			min-width: auto;
-			width: auto !important;
-		}
-		a {
-			width: 40px;
-			height: 40px;
-			max-width: 40px;
-			border-radius: 50%;
-			text-align: center;
-			span {
-				transition: margin 0.2s ease;
-				line-height: 40px;
-				&.share_count {
-					float: none;
+	& when (@circle=true) {
+		.theme-circle-color, .theme-circle-grey, .theme-circle-white {
+			li {
+				min-width: auto;
+				width: auto !important;
+			}
+			a {
+				width: 40px;
+				height: 40px;
+				max-width: 40px;
+				border-radius: 50%;
+				text-align: center;
+				span {
+					transition: margin 0.2s ease;
+					line-height: 40px;
+					&.share_count {
+						float: none;
+					}
 				}
+			}
+		}
+		
+		.theme-circle-white {
+			li a {
+				background-color: #fff;
+				border: 1px solid #999;
+				&:hover, &:focus {
+					background-color: #efefef;
+					border-color: #999;
+				}
+			}
+		}
+		.theme-circle-grey li a {
+			background-color: #fff;
+			border-color: #888;
+			transition: all 0.4s ease;
+			span {
+				color: #888;
+			}
+			&:hover span, &:focus span {
+				color: #fff;
 			}
 		}
 	}
 	
-	.theme-circle-white {
-		li a {
+	& when (@tooltip=true) {
+		.shariff-tooltip {
+			position: absolute;
 			background-color: #fff;
-			border: 1px solid #999;
-			&:hover, &:focus {
-				background-color: #efefef;
-				border-color: #999;
+			bottom: 36px;
+			color: #000000;
+			padding: 7px;
+			border: 1px solid #ddd;
+			width: 180px;
+			z-index: 100;
+			iframe {
+				display: block;
+				border: none;
 			}
 		}
 	}
-	.theme-circle-grey li a {
-		background-color: #fff;
-		border-color: #888;
-		transition: all 0.4s ease;
-		span {
-			color: #888;
-		}
-		&:hover span, &:focus span {
-			color: #fff;
-		}
-	}
-
-	.shariff-tooltip {
-		position: absolute;
-		background-color: #fff;
-		bottom: 36px;
-		color: #000000;
-		padding: 7px;
-		border: 1px solid #ddd;
-		width: 180px;
-		z-index: 100;
-		iframe {
-			display: block;
-			border: none;
-		}
-	}
+	
 	@media (max-width: 550px) {
 		text-align: center;
 	}
