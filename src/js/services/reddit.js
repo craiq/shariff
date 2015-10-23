@@ -3,6 +3,10 @@
 module.exports = function(shariff) {
     var url = encodeURIComponent(shariff.getURL()),
         title = encodeURIComponent(shariff.getTitle());
+	
+	if ( title !== '' ) {
+		title = '&title=' + title;
+	}
     
     return {
         popup: true,
@@ -16,6 +20,6 @@ module.exports = function(shariff) {
             'de': 'Bei Reddit teilen',
             'en': 'Share on Reddit',
         },
-        shareUrl: 'https://reddit.com/submit?url=' + url + '&title=' + title + shariff.getReferrerTrack()
+        shareUrl: 'https://reddit.com/submit?url=' + url + title + shariff.getReferrerTrack()
     };
 };
