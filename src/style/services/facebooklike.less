@@ -12,9 +12,11 @@
 			}
 		}
    }
-	.theme-circle-color, .theme-circle-white, .theme-circle-grey {
-        .facebooklike .fa-facebook:before {
-			content: @fa-var-thumbs-o-up;
+   & when (@circle=true) {
+		.theme-circle-color, .theme-circle-white, .theme-circle-grey {
+			.facebooklike .fa-facebook:before {
+				content: @fa-var-thumbs-o-up;
+			}
 		}
-	}
+   }
 }

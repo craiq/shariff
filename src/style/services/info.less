@@ -15,13 +15,19 @@
 			&:before { content: @fa-var-info; }
         }
     }
-    .theme-grey, .theme-circle-grey {
+	.m-info() {
         .info a {
             &:hover, &:focus {
                 background-color: #828282;
 				border-color: #828282;
             }
         }
+	}
+    .theme-grey {
+		.m-info();
+	}
+	.theme-circle-grey when (@circle=true) {
+		.m-info();
     }
 	.theme-grey {
 		.info a span {

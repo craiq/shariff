@@ -20,7 +20,7 @@
 		float: right;
 		}
 	}
-    .theme-grey, .theme-circle-grey {
+	.m-print() {
         .print a {
             &:hover {
                 background-color: #828282;
@@ -30,6 +30,12 @@
 				color: #fff;
 			}
         }
+	}
+    .theme-grey {
+		.m-print();
+	}
+	.theme-circle-grey when (@circle=true) {
+		.m-print();
     }
 
 }

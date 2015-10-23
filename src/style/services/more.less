@@ -28,7 +28,7 @@
 			&:before { content: @fa-var-minus; }
         }
     }
-    .theme-grey, .theme-circle-grey {
+	.m-more() {
         .more a {
             &:hover {
                 background-color: #828282;
@@ -38,6 +38,12 @@
 				color: #fff;
 			}
         }
+	}
+    .theme-grey{
+		.m-more();
+	}
+	.theme-circle-grey when (@circle=true) {
+		.m-more();
     }
 
 }
