@@ -3,11 +3,6 @@
 var url = require('url');
 
 module.exports = function(shariff) {
-    var title = shariff.getTitle() || shariff.getMeta('DC.title');
-    var creator = shariff.getMeta('DC.creator');
-    if (creator.length > 0) {
-        title += ' - ' + creator;
-    }
     var img = shariff.getOption('mediaUrl');
     if (img && img.length <= 0) {
         img = shariff.getMeta('og:image');
@@ -16,7 +11,7 @@ module.exports = function(shariff) {
     var shareUrl = url.parse('https://www.pinterest.com/pin/create/link/', true);
     shareUrl.query.url = shariff.getURL();
     shareUrl.query.media = img;
-    shareUrl.query.description = title;
+    shareUrl.query.description = shariff.getTitle();
 	shareUrl.protocol = 'https';
     delete shareUrl.search;
 

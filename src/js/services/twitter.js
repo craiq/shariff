@@ -19,17 +19,8 @@ var abbreviateText = function(text, length) {
 module.exports = function(shariff) {
     var shareUrl = url.parse('https://twitter.com/intent/tweet', true);
 
-    var title = shariff.getMeta('DC.title');
-    var creator = shariff.getMeta('DC.creator');
-
-    if (title.length > 0 && creator.length > 0) {
-        title += ' - ' + creator;
-    } else {
-        title = shariff.getTitle();
-    }
-
     // 120 is the max character count left after twitters automatic url shortening with t.co
-    shareUrl.query.text = abbreviateText(title, 120);
+    shareUrl.query.text = abbreviateText(shariff.getTitle(), 120);
     shareUrl.query.url = shariff.getURL();
     if (shariff.options.twitterVia !== null) {
         shareUrl.query.via = shariff.options.twitterVia;

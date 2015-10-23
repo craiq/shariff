@@ -165,7 +165,7 @@ Shariff.prototype = {
 
         // if
         mailSubject: function() {
-            return this.getMeta('DC.title') || this.getTitle();
+            return this.getMeta('DC.title') || this.getOption('title');
         },
 
         mailBody: function() { return this.getURL(); },
@@ -246,7 +246,15 @@ Shariff.prototype = {
     },
 
     getTitle: function() {
-        return this.getOption('title');
+		var title = this.getMeta('DC.title');
+		var creator = this.getMeta('DC.creator');
+	
+		if (title.length > 0 && creator.length > 0) {
+			title += ' - ' + creator;
+		} else {
+			title = this.getOption('title');
+		}
+        return title;
     },
 
     getReferrerTrack: function() {

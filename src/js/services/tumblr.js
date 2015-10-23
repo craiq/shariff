@@ -3,15 +3,9 @@
 var url = require('url');
 
 module.exports = function(shariff) {
-    var title = shariff.getTitle() || shariff.getMeta('DC.title');
-    var creator = shariff.getMeta('DC.creator');
-    if (creator.length > 0) {
-        title += ' - ' + creator;
-    }
-	
 	var shareUrl = url.parse('https://www.tumblr.com/share/link', true);
     shareUrl.query.url = shariff.getURL();
-    shareUrl.query.title = title;
+    shareUrl.query.title = shariff.getTitle();
 	shareUrl.protocol = 'https';
     delete shareUrl.search;
 
