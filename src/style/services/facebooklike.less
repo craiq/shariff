@@ -1,8 +1,8 @@
 .shariff {
     .facebooklike {
-        .fa-facebook {
+        .@{cssprefix}-facebook {
 			@media (max-width: 550px) {
-				&:before { content: @fa-var-thumbs-o-up; }
+				&:before { content: ~'"@{facebooklike_symbol}"'; }
 			}
         }
 		.shariff-tooltip {
@@ -14,8 +14,8 @@
    }
    & when (@circle=true) {
 		.theme-circle-color, .theme-circle-white, .theme-circle-grey {
-			.facebooklike .fa-facebook:before {
-				content: @fa-var-thumbs-o-up;
+			.facebooklike .@{cssprefix}-facebook:before {
+				content: ~'"@{facebooklike_symbol}"';
 			}
 		}
    }

@@ -11,8 +11,11 @@
 
 @custom: '';
 @insert: ';@{custom}';
-@circle: '';
-@tooltip: '';
+@circle: true;
+@tooltip: false;
+@cssprefix: @fa-css-prefix;
+@facebooklike_symbol: @fa-var-thumbs-o-up;
+@more_symbol: @fa-var-minus;
 
 .shariff {
 	font-size: 16px;
@@ -70,7 +73,7 @@
 				color: #FFF;
 				vertical-align: top;
 			}
-			.fa {
+			[class^="@{cssprefix}-"] {
 				width: 30px;
 				text-align: center;
 			}
@@ -187,3 +190,4 @@
 		text-align: center;
 	}
 }
+

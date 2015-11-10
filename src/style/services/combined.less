@@ -11,61 +11,107 @@
 		@col-cs: 	extract(extract(@service, @i),4); /* counter text */
 		@col-bgs: 	extract(extract(@service, @i),5); /* counter background */
 		@symbol: 	extract(extract(@service, @i),6); /* fontawesome variablen name */
-		@size: 		extract(extract(@service, @i),7); /* font size of symbol */
-		@count: 	extract(extract(@service, @i),8); /* has count defined */
+		@fontcode: 	extract(extract(@service, @i),7); /* fontawesome variablen name */
+		@size: 		extract(extract(@service, @i),8); /* font size of symbol */
+		@count: 	extract(extract(@service, @i),9); /* has count defined */
+		@grey: 		extract(extract(@service, @i),10); /* has no color */
 		
-		.@{name} {
-			a {
-				background-color: @col;
-				border: 1px solid @col;
-				&:hover, &:focus {
-					background-color: @col-h;
-					border-color: @col-h;
+		& when (@grey=false) {	
+			.@{name} {
+				a {
+					background-color: @col;
+					border: 1px solid @col;
+					&:hover, &:focus {
+						background-color: @col-h;
+						border-color: @col-h;
+					}
+				}
+				.@{cssprefix}-@{symbol} {
+					font-size: @size;
+					&:before { 
+						content: ~'"@{fontcode}"';
+					}
 				}
 			}
-			.fa-@{symbol} {
-				font-size: @size;
-				&:before { 
-					content: ~'"@{fa-var-@{symbol}}"';
+			.theme-color, .theme-white {
+				.@{name} .share_count when (@count=true) {
+					color: @col-cs;
+					background-color: @col-bgs;
+				}
+			}
+			.theme-grey .@{name} a:hover, .theme-grey .@{name} a:focus {
+				.share_count when (@count=true) {
+					color: @col-cs;
+					background-color: @col-bgs;
+				}
+			}
+	
+			.theme-white .@{name} {
+				a span {
+					color: @col !important;
+				}
+			}
+			.theme-circle-white .@{name} when (@circle=true) {
+				a span {
+					color: @col !important;
+				}
+			}
+			
+			.theme-grey .@{name} {
+				 a:hover, a:focus {
+					background-color: @col;
+					border-color: @col;
+				}
+			}
+			.theme-circle-grey .@{name} when (@circle=true) {
+				 a:hover, a:focus {
+					background-color: @col;
+					border-color: @col;
 				}
 			}
 		}
-		.theme-color, .theme-white {
-			.@{name} .share_count when (@count=true) {
-				color: @col-cs;
-				background-color: @col-bgs;
+		
+		& when (@grey=true) {
+			.@{name} {
+				a {
+					background-color: #fff;
+					border: 1px solid #ccc;
+					&:hover {
+						background-color: #efefef;
+					}
+					span {
+						color: #666;
+					}
+				}
+				.@{cssprefix}-@{symbol} {
+					font-size: @size;
+					&:before { content: ~'"@{fontcode}"'; }
+				}
 			}
-		}
-		.theme-grey .@{name} a:hover, .theme-grey .@{name} a:focus {
-			.share_count when (@count=true) {
-				color: @col-cs;
-				background-color: @col-bgs;
+			.theme-grey{
+				.@{name} a {
+					&:hover {
+						background-color: #828282;
+						border-color: #828282;
+					}
+					span {
+						color: #fff;
+					}
+				}
 			}
-		}
-
-		.theme-white .@{name} {
-			a span {
-				color: @col !important;
-			}
-		}
-		.theme-circle-white .@{name} when (@circle=true) {
-			a span {
-				color: @col !important;
-			}
+			.theme-circle-grey when (@circle=true) {
+				.@{name} a {
+					&:hover {
+						background-color: #828282;
+						border-color: #828282;
+						span {
+							color: #fff;
+						}
+					}
+				}
+			}			
 		}
 		
-		.theme-grey .@{name} {
-			 a:hover, a:focus {
-				background-color: @col;
-				border-color: @col;
-			}
-		}
-		.theme-circle-grey .@{name} when (@circle=true) {
-			 a:hover, a:focus {
-				background-color: @col;
-				border-color: @col;
-			}
-		}
 		.loop-service((@i + 1));
 	}
 }

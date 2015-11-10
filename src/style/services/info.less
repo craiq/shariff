@@ -1,3 +1,4 @@
+@info_symbol: @fa-var-info; 
 .shariff {
     .info {
         a {
@@ -10,9 +11,9 @@
 				color: #666;
 			}
         }
-        .fa-info {
+        .@{cssprefix}-info {
             font-size: 20px;
-			&:before { content: @fa-var-info; }
+			&:before { content: ~'"@{info_symbol}"'; }
         }
     }
 	.m-info() {

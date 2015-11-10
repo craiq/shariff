@@ -39,7 +39,7 @@ var Shariff = function(element, options) {
     // available services. /!\ Browserify can't require dynamically by now.
     var availableServices = [];
 	
-	if(process.env.addthis) {
+	if(process.env.addthis ) {
 		availableServices.push(require('./services/addthis'));
 	}
 	if(process.env.facebook) {
@@ -328,7 +328,7 @@ Shariff.prototype = {
 			}
 
             if (typeof service.faName !== 'undefined') {
-                $shareLink.prepend($('<span>').addClass('fa').addClass(service.faName).attr('aria-hidden', 'true'));
+                $shareLink.prepend($('<span>').addClass(service.faName).attr('aria-hidden', 'true'));
             }
 
             if (service.popup) {
@@ -474,12 +474,12 @@ Shariff.prototype = {
 			$buttonList
 				.on('mouseenter focusin', function() {
 					if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-						$(this).find('span.share_count').css('top', '-40px').siblings('.fa').css('top', '-40px');
+						$(this).find('span.share_count').css('top', '-40px').siblings('[class^="' + process.env.cssprefix + '-"]').css('top', '-40px');
 					}
 			})
 				.on('mouseleave focusout', function() {
 					if($(this).closest('ul').is('.theme-circle-color, .theme-circle-white, .theme-circle-grey')) {
-						$(this).find('span.share_count').css('top', '').siblings('.fa').css('top', '');
+						$(this).find('span.share_count').css('top', '').siblings('[class^="' + process.env.cssprefix + '-"]').css('top', '');
 					}
 			});
 		}

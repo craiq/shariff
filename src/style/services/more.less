@@ -9,42 +9,10 @@
 	}
 
     .more {
-        a {
-            background-color: #fff;
- 			border: 1px solid #ccc;
-            &:hover {
-                background-color: #efefef;
-            }
-			span {
-				color: #666;
-			}
-        }
-        .fa-plus {
+        .@{cssprefix}-minus {
             font-size: 16px;
-			&:before { content: @fa-var-plus; }
-        }
-        .fa-minus {
-            font-size: 16px;
-			&:before { content: @fa-var-minus; }
+			&:before { content: ~'"@{more_symbol}"'; }
         }
     }
-	.m-more() {
-        .more a {
-            &:hover {
-                background-color: #828282;
-				border-color: #828282;
-            }
-			span {
-				color: #fff;
-			}
-        }
-	}
-    .theme-grey{
-		.m-more();
-	}
-	.theme-circle-grey when (@circle=true) {
-		.m-more();
-    }
-
 }
 

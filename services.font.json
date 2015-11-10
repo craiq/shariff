@@ -1,11 +1,13 @@
 {
 	"addthis": {
 		"col": "#f8694d",
-		"symbol_name": "plus"
+		"symbol_name": "plus",
+		"symbol_code": "e801"
 	},
 	"bitcoin": {
 		"col": "#F2911B",
-		"symbol_name": "btc"
+		"symbol_name": "btc",
+		"symbol_code": "e800"
 	},
 	"diaspora": {
 		"col": "#999",
@@ -15,73 +17,89 @@
 	"facebook": {
 		"col": "#3b5998",
 		"col_counterbg": "#dfe3ee",
+		"symbol_code": "e804",
 		"count": "true"
 	},
 	"facebooklike": {
 		"col": "#3b5998",
 		"col_counterbg": "#dfe3ee",
 		"symbol_name": "facebook",
-		"count": "true"
+		"symbol_code": "e804",
+		"count": "true",
+		"symbol2": "e803"
 	},
 	"googleplus": {
 		"col": "#d34836",
 		"symbol_name": "google-plus",
+		"symbol_code": "e805",
 		"count": "true"
 	},
 	"googleplusplus": {
 		"col": "#d34836",
 		"symbol_name": "google-plus",
+		"symbol_code": "e805",
 		"count": "true"
 	},
 	"linkedin": {
 		"col": "#0077b5",
+		"symbol_code": "e806",
 		"count": "true"
 	},
 	"print": {
-		"symbol_name": "print",
+		"symbol_code": "e810",
 		"size": "18px"
 	},
 	"xing": {
 		"col": "#126567",
+		"symbol_code": "e80d",
 		"count": "true"
 	},
 	"flattr": {
 		"col": "#66b115",
-		"symbol_name": "money"
+		"symbol_name": "money",
+		"symbol_code": "e811"
 	},
 	"mail": {
 		"col": "#999",
-		"symbol_name": "envelope"
+		"symbol_name": "envelope",
+		"symbol_code": "e80e"
 	},
 	"pinterest": {
 		"col": "#bd081c",
-		"symbol_name": "pinterest-p"
+		"symbol_name": "pinterest-p",
+		"symbol_code": "e807"
 	},
 	"reddit": {
 		"col": "#FF4500",
-		"size": "24px"
+		"symbol_code": "e808"
 	},
 	"tumblr": {
-		"col": "#34526f"
+		"col": "#34526f",
+		"symbol_code": "e80a"
 	},
 	"twitter": {
 		"col": "#55acee",
+		"symbol_code": "e80b",
 		"size": "24px",
 		"count": "true"
 	},
 	"whatsapp": {
 		"col": "#5cbe4a",
-		"size": "22px"
+		"size": "22px",
+		"symbol_code": "e80c"
 	},
 	"stumbleupon": {
-		"col": "#eb4924"
+		"col": "#eb4924",
+		"symbol_code": "e809"
 	},
 	"info": {
-		"symbol_name": "info",
+		"symbol_code": "e80f",
 		"size": "20px"
 	},
 	"more": {
 		"symbol_name": "plus",
+		"symbol_code": "e801",
+		"symbol2": "e802",
 		"size": "16px"
 	}
 }
