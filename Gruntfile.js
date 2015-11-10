@@ -196,21 +196,30 @@ module.exports = function(grunt) {
 	
 	var data = fs.readFileSync('config.json', 'utf8', function (err, data) {
 		if (err) {
-			console.log('Error in config.json');
 			throw err;
 		}
 		return data;
 	});
 	var services_data = fs.readFileSync('services.json', 'utf8', function (err, data) {
 		if (err) {
-			console.log('Error in services.json');
 			throw err;
 		}
 		return data;
 	});
 
-	var aviableservices = JSON.parse(services_data);
-	var conf = JSON.parse(data);
+	var aviableservices = '';
+	try {
+		aviableservices = JSON.parse(services_data);
+	} catch (e) {
+		grunt.fail.warn('Error in services.json');
+	}
+	
+	var conf = '';
+	try {
+		conf = JSON.parse(data);
+	} catch (e) {
+		grunt.fail.warn('Error in config.json');
+	}
 	
 	var lde = gcfg.less.demo.options.modifyVars;
 	var ld = gcfg.less.dist.options.modifyVars;
