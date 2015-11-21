@@ -1,2 +1,6 @@
 demo
+
 node_modules
+
+*.tuc.json
+.gitignore
