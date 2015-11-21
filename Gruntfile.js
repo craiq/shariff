@@ -337,6 +337,11 @@ module.exports = function(grunt) {
 			lde['fa-font-path'] = '"' + conf.font.path_demo + '"';
 		}
 	
+		if ( typeof conf.font.family !== 'undefined' && typeof conf.font.exist !== 'undefined' && conf.font.exist === true )
+		{
+			lde.fontfam = ld.fontfam = ldm.fontfam = conf.font.family;
+			ld.font = ldm.font = false;
+		} else
 		if ( typeof conf.font.file !== 'undefined' && typeof conf.font.type !== 'undefined'  && typeof conf.font.family !== 'undefined' ) {
 			lde.fontfam = ld.fontfam = ldm.fontfam = conf.font.family;
 			var fontsrc = '';

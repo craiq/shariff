@@ -1,4 +1,5 @@
 /* LESS Document */
+@font: true;
 @font-path: 'https://netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts';
 @fontfam: 'FontAwesome';
 @font-src: url('@{font-path}/fontawesome-webfont.eot?#iefix&v=@{fa-version}') format('embedded-opentype'),
@@ -8,13 +9,17 @@
     url('@{font-path}/fontawesome-webfont.svg?v=@{fa-version}#fontawesomeregular') format('svg');
 @font-src-eot: url('@{font-path}/fontawesome-webfont.eot?v=@{fa-version}');
 
-@font-face {
-  font-family: @fontfam;
-  src: ~'@{font-src-eot}';
-  src: ~'@{font-src}';
-  font-weight: normal;
-  font-style: normal;
+.mixin () when (@font=true) {
+	@font-face {
+	  font-family: @fontfam;
+	  src: ~'@{font-src-eot}';
+	  src: ~'@{font-src}';
+	  font-weight: normal;
+	  font-style: normal;
+	}
 }
+
+.mixin;
 
 [class^="@{cssprefix}-"] {
   display: inline-block;
@@ -23,5 +28,4 @@
   text-rendering: auto; // optimizelegibility throws things off #1094
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
